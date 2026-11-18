@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Finance Lesson 5.4: Comparing Payment Methods — Study Guide &amp; Unit Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Highlight styles matching the study outline */
+        .study-content strong {
+            color: #f8fafc;
+            font-weight: 700;
+        }
+        .study-content em {
+            color: #93c5fd;
+            font-style: italic;
+        }
+        .study-content u,
+        .study-underline {
+            text-decoration: none;
+            background-color: rgba(245, 158, 11, 0.22);
+            color: #fde68a;
+            border-bottom: 2px solid #f59e0b;
+            padding: 0 3px;
+            border-radius: 3px;
+        }
+        /* Spotlight mode dims plain text so bold, italic, and underline pop */
+        .spotlight-mode .study-content li,
+        .spotlight-mode .study-content p {
+            color: #64748b;
+        }
+        /* 3D Flashcard Flip */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        /* Auto-hide top header bar; reveal smoothly on hover near top edge, focus-within, or pin */
+        #top-header-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            height: 28px;
+            transition: height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #top-header-zone:hover,
+        #top-header-zone:focus-within,
+        #top-header-zone.header-pinned {
+            height: auto;
+        }
+        #main-header {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease;
+        }
+        #top-header-zone:hover #main-header,
+        #top-header-zone:focus-within #main-header,
+        #top-header-zone.header-pinned #main-header {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #header-hover-handle {
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+        #top-header-zone:hover #header-hover-handle,
+        #top-header-zone:focus-within #header-hover-handle,
+        #top-header-zone.header-pinned #header-hover-handle {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-amber-500/30 selection:text-amber-200">
+
+    <!-- HOVER-REVEAL TOP BAR ZONE (FULL HEADER HIDES & SHOWS ON HOVER) -->
+    <div id="top-header-zone">
+        <!-- Subtle Top Edge Pill Handle When Header Is Hidden -->
+        <div id="header-hover-handle" onclick="toggleHeaderPin()" title="Hover top edge or click to open menu & student info bar" class="mx-auto w-fit cursor-pointer bg-slate-900/95 border-x border-b border-amber-500/40 text-amber-300 px-4 py-1 rounded-b-xl shadow-lg flex items-center gap-2 text-[11px] font-bold tracking-wide">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            <span id="handle-tab-label">Ch. 5 Lesson 5.4 • 1. Study Outline</span>
+            <span class="text-slate-400 font-normal hidden sm:inline">• Hover top edge for Menu &amp; Name</span>
+            <span>&#9662;</span>
+        </div>
+
+        <!-- FULL TOP BAR: RESPONDENT IDENTITY & NAVIGATION TABS -->
+        <header id="main-header" class="bg-slate-900/95 backdrop-blur border-b border-slate-800 shadow-2xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 space-y-2.5">
+                <!-- Top Row: Title & Respondent Inputs -->
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                    <div class="flex items-start sm:items-center justify-between gap-2">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="inline-block text-[11px] font-bold uppercase tracking-widest text-amber-400">Personal Finance • Chapter 5 • LO 5.4</span>
+                                <span id="active-tab-pill" class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-amber-300 border border-slate-700">1. Study Outline</span>
+                            </div>
+                            <h1 class="text-base sm:text-lg font-extrabold text-slate-100 leading-tight">Lesson 5.4: Comparing Payment Methods</h1>
+                        </div>
+                        <button type="button" id="btn-pin-header" onclick="toggleHeaderPin()" title="Pin or Unpin Top Bar" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[11px] font-semibold text-amber-300 shrink-0">
+                            Pin Bar
+                        </button>
+                    </div>
+
+                    <!-- Respondent Identity Bar -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full lg:w-auto">
+                        <input id="student-name" type="text" placeholder="Full Name (Required)" oninput="saveRespondentInfo()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400" />
+                        <input id="student-email" type="email" placeholder="Student Email (Optional)" oninput="saveRespondentInfo()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400" />
+                        <input id="student-date" type="date" onchange="saveRespondentInfo()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400" />
+                    </div>
+                </div>
+
+                <!-- Bottom Row: 3 Main Navigation Tabs -->
+                <nav class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/80" aria-label="Main Sections">
+                    <div class="flex flex-wrap gap-1.5 sm:gap-2">
+                        <button id="tab-outline" onclick="switchTab('outline')" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-amber-500 text-slate-950 shadow">
+                            1. Study Outline (12)
+                        </button>
+                        <button id="tab-flashcards" onclick="switchTab('flashcards')" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+                            2. Flashcards (60)
+                        </button>
+                        <button id="tab-test" onclick="switchTab('test')" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+                            3. Unit Test (180 Pts)
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button type="button" onclick="downloadStandaloneHTML()" class="px-3 py-1.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 text-xs font-bold transition">
+                            &#11015; Download index.html
+                        </button>
+                        <span class="hidden md:inline text-[11px] text-slate-400 italic">Move cursor away to auto-hide top bar</span>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-9 pb-6">
+
+        <!-- =============================================================== -->
+        <!-- TAB 1: STUDY OUTLINE (WITH BOLD, ITALIC, UNDERLINE HIGHLIGHTS)  -->
+        <!-- =============================================================== -->
+        <div id="view-outline" class="space-y-5">
+            <!-- Legend, Search & Filter Bar -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-slate-100">Comprehensive Study Outline — Lesson 5.4</h2>
+                        <p class="text-xs text-slate-400">Formatted from Chapter 5 (Saving: Banking and Financial Services, pp. 197–206) with key financial terms, formulas, and consumer protections.</p>
+                    </div>
+                    <!-- Highlight Legend & Spotlight Toggle -->
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800"><strong class="text-slate-100">Bold</strong> = Key Terms</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800"><em class="text-blue-300">Italic</em> = Examples &amp; Apps</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800"><u class="study-underline">Underline</u> = Core Rule</span>
+                        <button id="btn-spotlight" onclick="toggleSpotlightMode()" class="px-3 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-semibold transition">
+                            &#10024; Spotlight Highlights: OFF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search & Topic Filter -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input id="outline-search" type="text" placeholder="Search debit cards, P2P apps, cryptocurrency, checking accounts, checks, reconciliation..." oninput="renderOutline()" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400" />
+                    <select id="outline-topic-filter" onchange="renderOutline()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+                        <option value="ALL">All 4 Topics (12 Sections)</option>
+                        <option value="I">Topic I: Digital &amp; Electronic Payments</option>
+                        <option value="II">Topic II: Mobile Transfers, FinTech &amp; Smart Cards</option>
+                        <option value="III">Topic III: Types of Checking Accounts</option>
+                        <option value="IV">Topic IV: Managing Checking &amp; Other Payment Methods</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Outline Cards Container -->
+            <div id="outline-container" class="space-y-4"></div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- TAB 2: 60 INTERACTIVE FLASHCARDS                                -->
+        <!-- =============================================================== -->
+        <div id="view-flashcards" class="hidden space-y-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-bold text-slate-100">60 Interactive Study Flashcards</h2>
+                        <p class="text-xs text-slate-400">Click card or press <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">Space</kbd> to flip • Use <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">&larr;</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">&rarr;</kbd> arrow keys to navigate</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <select id="fc-topic-filter" onchange="filterFlashcards()" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="ALL">All Topics (60 Cards)</option>
+                            <option value="I">Topic I: Digital &amp; Debit Payments</option>
+                            <option value="II">Topic II: P2P, Crypto &amp; Wallets</option>
+                            <option value="III">Topic III: Checking Account Types</option>
+                            <option value="IV">Topic IV: Account Management &amp; Checks</option>
+                            <option value="UNMASTERED">Needs Review Only</option>
+                        </select>
+                        <button onclick="shuffleFlashcards()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition">Shuffle Deck</button>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="space-y-1.5">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span id="fc-counter">Card 1 of 60</span>
+                        <span id="fc-mastered-count" class="text-emerald-400 font-semibold">Mastered: 0 / 60</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-950 rounded-full overflow-hidden">
+                        <div id="fc-progress-bar" class="h-full bg-amber-500 transition-all duration-300" style="width: 2%;"></div>
+                    </div>
+                </div>
+
+                <!-- 3D Flip Card -->
+                <div class="perspective-1000 max-w-3xl mx-auto my-4">
+                    <div id="fc-card-inner" onclick="flipFlashcard()" class="relative w-full min-h-[290px] sm:min-h-[330px] cursor-pointer transform-style-3d">
+                        <!-- Front -->
+                        <div class="backface-hidden absolute inset-0 bg-gradient-to-br from-slate-950 to-slate-900 border-2 border-slate-700 hover:border-amber-500/60 rounded-2xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl">
+                            <div class="flex items-center justify-between">
+                                <span id="fc-topic-badge" class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">Topic I</span>
+                                <span id="fc-status-badge" class="text-xs font-semibold text-slate-400">Front • Prompt</span>
+                            </div>
+                            <div class="my-auto text-center px-2">
+                                <p id="fc-front-text" class="text-xl sm:text-2xl font-bold text-slate-100 leading-snug"></p>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" onclick="event.stopPropagation(); toggleFlashcardHint()" class="text-xs text-amber-400 hover:text-amber-300 underline">Show / Hide Hint</button>
+                                <p id="fc-hint-text" class="hidden text-xs text-slate-400 italic mt-1.5"></p>
+                            </div>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="backface-hidden rotate-y-180 absolute inset-0 bg-gradient-to-br from-amber-950/40 via-slate-900 to-slate-950 border-2 border-amber-500/60 rounded-2xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Answer &amp; Financial Insight</span>
+                                <span class="text-xs font-semibold text-slate-400">Click to flip back</span>
+                            </div>
+                            <div class="my-auto text-center px-2">
+                                <p id="fc-back-text" class="text-base sm:text-xl font-medium text-slate-100 leading-relaxed"></p>
+                            </div>
+                            <div class="text-center text-xs text-slate-400">Mark your mastery below</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flashcard Controls -->
+                <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                    <button onclick="prevFlashcard()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs sm:text-sm transition">&larr; Previous</button>
+                    <button onclick="flipFlashcard()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition">Flip Card</button>
+                    <button onclick="toggleMasteredCurrent()" id="btn-master-card" class="px-4 py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 font-semibold text-xs sm:text-sm transition">Mark Mastered</button>
+                    <button onclick="nextFlashcard()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs sm:text-sm transition">Next &rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- TAB 3: 180-POINT AUTO-GRADED UNIT TEST                          -->
+        <!-- =============================================================== -->
+        <div id="view-test" class="hidden space-y-6">
+            <!-- Sticky Test Action & Score Banner -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-100">Personal Finance Unit Test: Lesson 5.4 — Comparing Payment Methods</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">12 Sections • 5 Matching + 5 Multiple Choice + 5 Fill-in-the-Blank per section = <strong class="text-amber-300">180 Points Total</strong></p>
+                    <p id="test-progress-text" class="text-xs font-semibold text-emerald-400 mt-1">Answered: 0 / 180 items</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button onclick="gradeAllQuestions()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm shadow-lg transition">
+                        Grade My Test
+                    </button>
+                    <button onclick="resetUnitTest()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold text-sm transition">
+                        Reset Answers
+                    </button>
+                </div>
+            </div>
+
+            <!-- Score Result & Google Form Submission Card -->
+            <div id="test-results-panel" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+                <div id="score-summary-box" class="hidden p-4 rounded-xl bg-slate-950 border border-amber-500/40 space-y-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-sm font-bold text-amber-400 uppercase tracking-wider">Unit Test Score Report</span>
+                        <span id="final-score-badge" class="text-xl sm:text-2xl font-extrabold text-emerald-400">0 / 180 (0%)</span>
+                    </div>
+                    <p id="topic-breakdown-text" class="text-xs text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <!-- Google Form Submission Box -->
+                <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 sm:p-5">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider">Google Form Response Submission</h3>
+                                <span id="test-form-status-badge" class="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Form Linked
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1" id="test-form-status-text">Hover the top edge to enter your Name, grade your test, and submit directly to Google Form or open the pre-filled link.</p>
+                        </div>
+                    </div>
+                    <div id="submit-status-box" class="hidden mb-3 p-3 rounded-lg text-xs font-medium"></div>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button type="button" id="btn-submit-direct" onclick="submitDirectlyToFormResponse()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg transition cursor-pointer">
+                            Submit Score Directly to Google Form
+                        </button>
+                        <a id="btn-submit-gform" href="https://docs.google.com/forms/d/e/1FAIpQLSfS8rsuDcVf7caQlfT8NL3ts0TlyYFNRvBQRoQIzKjg9z4vgQ/viewform?usp=pp_url" target="_blank" rel="noopener" onclick="return handleGoogleFormLinkClick(event)" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-emerald-300 font-semibold text-sm transition cursor-pointer">
+                            Open Pre-Filled Google Form &nearr;
+                        </a>
+                        <button type="button" onclick="copyPrefilledGoogleFormLink()" id="btn-copy-prefilled" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-sm transition">
+                            Copy Pre-Filled Form Link
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All 12 Test Sections Render Here -->
+            <div id="test-sections-container" class="space-y-6"></div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 z-50 hidden max-w-sm bg-slate-900 border border-amber-500/50 text-slate-100 px-4 py-3 rounded-xl shadow-2xl text-xs font-medium"></div>
+
+    <script>
+        // =========================================================================
+        // PRE-BOUND GOOGLE FORM CONFIGURATION
+        // =========================================================================
+        const DEFAULT_FORM_CONFIG = {
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSfS8rsuDcVf7caQlfT8NL3ts0TlyYFNRvBQRoQIzKjg9z4vgQ/formResponse',
+            viewformUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfS8rsuDcVf7caQlfT8NL3ts0TlyYFNRvBQRoQIzKjg9z4vgQ/viewform?usp=pp_url',
+            name: 'entry.835228018',
+            email: 'entry.897524592',
+            date: 'entry.1192112236',
+            score: 'entry.2006331865',
+            details: 'entry.1686881486'
+        };
+
+        // =========================================================================
+        // 1. COMPLETE STUDY OUTLINE DATA (TOPICS I-IV, 12 SECTIONS)
+        // =========================================================================
+        const OUTLINE_DATA = [
+            {
+                id: 'I-1',
+                topic: 'I',
+                topicTitle: 'Topic I: Digital & Electronic Payments (LO 5.4, pp. 197–198)',
+                title: '1. Evolution of Payment Methods & Cashless Legislation (Exhibit 5-8)',
+                figures: 'Consumers, Retailers, Unbanked Customers, Local & State Legislators.',
+                places: 'Point-of-Sale (POS) Terminals, Retail Stores, Online Marketplaces.',
+                bullets: [
+                    '<strong>Shift from Paper to Digital:</strong> Cash and paper checks, once used for nearly all consumer purchases, have increasingly been replaced by <strong>touchless payments</strong>, <strong>digital wallets</strong>, and <strong>QR code payments</strong> driven by technology, improved security, and consumer convenience.',
+                    '<strong>Three Categories of Payment Alternatives (Exhibit 5-8):</strong> (1) <em>Electronic Payments</em> (debit cards, online payments, mobile transfers, stored-value cards, smart cards, digital wallets); (2) <em>Checking Accounts</em> (traditional, special feature, checkless); and (3) <em>Other Payment Methods</em> (certified checks, cashier’s checks, money orders, traveler’s checks).',
+                    '<strong>Why Cash Remains Essential:</strong> Despite rapid digital adoption, <u>legislation in several cities and states bans cashless stores</u> because refusing physical currency discriminates against low-income or unbanked customers who lack a bank account or credit card.'
+                ]
+            },
+            {
+                id: 'I-2',
+                topic: 'I',
+                topicTitle: 'Topic I: Digital & Electronic Payments (LO 5.4, pp. 197–198)',
+                title: '2. Debit Card Transactions, Holds & Account Security',
+                figures: 'Debit Cardholders, Merchants (Hotels, Gas Stations, Car Rentals), Financial Institutions.',
+                places: 'ATMs, Gas Pumps, Hotels, Car Rental Counters, Retail Checkouts.',
+                bullets: [
+                    '<strong>How Debit Cards Work:</strong> Purchases made with a <strong>debit card</strong> (also called a <em>cash card</em> or <em>check card</em>) deduct money directly from your <strong>checking account</strong>.',
+                    '<strong>Signature vs. PIN Processing:</strong> Most debit cards can be processed in two ways: (1) with your <strong>signature</strong> (like a credit card), or (2) with your <strong>Personal Identification Number (PIN)</strong> (like an ATM card). <u>Processing a debit card with a signature (as credit) gives you stronger fraud protection and dispute rights</u> than a PIN transaction.',
+                    '<strong>Account Holds & Overdraft Risk:</strong> When using a debit card to <em>check into a hotel, buy gas at the pump, or rent a car</em>, the merchant may place a temporary <strong>hold (freeze)</strong> on funds exceeding your actual purchase, which can cause an <strong>overdrawn account</strong> if other checks or payments clear.',
+                    '<strong>Protecting Your Main Account:</strong> <u>Avoid using a debit card for major purchases or online shopping</u> (credit cards offer superior return and defect protection). Consider linking your debit card to a <strong>separate secondary checking account</strong> so a lost or stolen card cannot drain your primary savings or bill-paying funds.'
+                ]
+            },
+            {
+                id: 'I-3',
+                topic: 'I',
+                topicTitle: 'Topic I: Digital & Electronic Payments (LO 5.4, pp. 197–198)',
+                title: '3. Credit Cards vs. Debit Cards & Online Bill Payments',
+                figures: 'Borrowers, Payees (Utility & Service Companies), Third-Party Payment Processors, PayNearMe Users.',
+                places: 'Online Banking Portals, Local Retail Payment Kiosks (PayNearMe.com).',
+                bullets: [
+                    '<strong>When to Use a Credit Card:</strong> Use a <strong>credit card</strong> to <em>delay payment</em>, <em>build a positive credit history</em>, make <em>online or major purchases</em> (for stronger buyer protection), and <em>earn generous rewards points</em>.',
+                    '<strong>When to Use a Debit Card:</strong> Use a <strong>debit card</strong> to <em>limit spending strictly to available cash</em>, <em>avoid future monthly bills</em>, and <em>avoid interest charges or annual fees</em>.',
+                    '<strong>Monitoring Online Payment Dates:</strong> Banks and online bill-pay companies act as third parties to pay bills. Always check whether the bank asks for the <strong>delivery date</strong> (when the payee receives funds) or the <strong>processing start date</strong>; <u>selecting the wrong date or relying on slow third-party services can trigger late fees, utility shutoffs, or a damaged credit report</u>.',
+                    '<strong>Cash-Based Online Payments (PayNearMe):</strong> People without a bank account, debit card, or credit card can shop online using services like <em>PayNearMe.com</em>, which generates a barcode allowing the buyer to <strong>pay with physical cash at a participating local store</strong>.'
+                ]
+            },
+            {
+                id: 'II-1',
+                topic: 'II',
+                topicTitle: 'Topic II: Mobile Transfers, FinTech & Smart Cards (pp. 198–199)',
+                title: '1. Mobile Transfers, Peer-to-Peer (P2P) Apps & Money Transfer Services',
+                figures: 'P2P App Users, International Senders & Recipients, Scammers.',
+                places: 'Contactless POS Sensors, Mobile Apps (PayPal, Venmo, Zelle, Cash App), Global Wire Networks.',
+                bullets: [
+                    '<strong>Contactless Mobile Payments:</strong> Smartphones, tablets, and smartwatches complete purchases via a simple <strong>tap or wave at a point-of-sale (POS) terminal sensor</strong>.',
+                    '<strong>Peer-to-Peer (P2P) Payment Apps:</strong> Apps such as <em>PayPal, Square Cash (Cash App), Venmo, and Zelle</em> let individuals send money via email or phone number after linking a debit card, credit card, or bank account. Fees range from <strong>under $1 per transaction to a percentage of the amount sent</strong> (especially when using a credit card or instant transfer).',
+                    '<strong>Avoiding P2P Scams:</strong> <u>P2P transfers are often irreversible like cash</u>—beware of unsolicited payment requests, suspicious links, or businesses asking for P2P payments instead of standard merchant checkout.',
+                    '<strong>Domestic & International Money Transfers:</strong> Companies like <em>MoneyGram, TransferWise (Wise), Western Union, and Xoom</em> use secure electronic systems to send money across the country or globe within 1–2 days for a service fee.'
+                ]
+            },
+            {
+                id: 'II-2',
+                topic: 'II',
+                topicTitle: 'Topic II: Mobile Transfers, FinTech & Smart Cards (pp. 198–199)',
+                title: '2. FinTech Focus: Cryptocurrency, Blockchain & Crypto Wallets',
+                figures: 'Crypto Investors, Merchants, U.S. Federal Reserve & Central Banks.',
+                places: 'Peer-to-Peer Blockchain Networks, Digital & Offline (Cold) Crypto Wallets.',
+                bullets: [
+                    '<strong>What Is Cryptocurrency?:</strong> Over <strong>20,000 cryptocurrencies</strong> (also called <em>cybercurrencies, digital currencies, or virtual currencies</em>) exist, led by <em>Bitcoin, Ethereum, Cardano, Litecoin, and Tether</em>. They are <strong>computer files used as digital money</strong> or a store of value.',
+                    '<strong>Extreme Price Volatility:</strong> Because investor speculation drives rapid price swings, <u>instability limits cryptocurrency’s everyday use as cash</u>—$10 of crypto spent on a meal today might be worth $100 tomorrow, or $30 received by a business could drop to $6 the next day.',
+                    '<strong>Blockchain & Crypto Wallets:</strong> Transactions are verified and recorded on a decentralized <strong>blockchain</strong> network. Users store digital assets in wallet apps like <em>Coinbase</em> and <em>Electrum</em>, or <u>store tokens offline ("cold storage") for maximum protection against hackers</u>. Meanwhile, the <strong>U.S. Federal Reserve</strong> and foreign central banks are researching central bank digital currencies (CBDCs).'
+                ]
+            },
+            {
+                id: 'II-3',
+                topic: 'II',
+                topicTitle: 'Topic II: Mobile Transfers, FinTech & Smart Cards (pp. 198–199)',
+                title: '3. Stored-Value Cards, Smart Cards & Digital Wallets',
+                figures: 'Prepaid Cardholders, Government Benefit Recipients (Social Security), Contactless Shoppers.',
+                places: 'Transit Systems, Highway Tolls, School Cafeterias, Retail Stores, Mobile Wallets.',
+                bullets: [
+                    '<strong>Stored-Value (Prepaid) Cards:</strong> Used for <em>transit fares, highway tolls, phone minutes, laundry, school lunches, and retail gift cards</em>. Some are disposable while others are reloadable. Watch out for <strong>activation charges, ATM fees, and transaction fees</strong>.',
+                    '<strong>Identity & Loss Protection:</strong> <u>A prepaid gift card protects your identity because it is not linked to your bank account</u>; if lost or stolen, your maximum loss is limited to the remaining balance on the card. Governments also issue <strong>Social Security benefits and state tax refunds</strong> on prepaid debit cards for unbanked citizens.',
+                    '<strong>Smart Cards vs. Digital Wallets:</strong> <strong>Smart cards</strong> contain an <em>embedded microchip</em> storing banking credentials, past purchases, insurance data, and medical history. <strong>Digital wallets</strong> (<em>Apple Pay, Google Pay</em>) store virtual versions of credit/debit cards on a phone for <strong>hygienic, contactless checkout</strong>.'
+                ]
+            },
+            {
+                id: 'III-1',
+                topic: 'III',
+                topicTitle: 'Topic III: Types of Checking Accounts (pp. 199–200)',
+                title: '1. Emerging Account Names & Traditional Checking Accounts',
+                figures: 'Students, Everyday Depositors, High-Balance Savers, Low-Volume Check Writers.',
+                places: 'Commercial Banks, Credit Unions, Online Banks.',
+                bullets: [
+                    '<strong>Modern Account Terminology:</strong> While "checking account" remains standard, banks increasingly market them as <strong>debit accounts, digital bank accounts, spending accounts, or transaction accounts</strong>.',
+                    '<strong>Regular Checking Accounts:</strong> Typically charge a <strong>monthly service fee</strong> (for example, <em>$7.50/month = $90/year</em>) unless waived by maintaining a <strong>minimum balance</strong>, linking a savings balance, or qualifying for a <strong>free student account</strong>.',
+                    '<strong>Interest-Earning Checking Accounts:</strong> Pay interest based on the <strong>Annual Percentage Yield (APY)</strong>, but require a higher minimum balance. <u>Dropping below the minimum forfeits interest and triggers a monthly service fee</u>.',
+                    '<strong>Activity Accounts:</strong> Designed for people who write only a few checks each month and cannot maintain a minimum balance; they require <strong>no minimum balance</strong>, but charge a <strong>per-check fee</strong> (and sometimes a per-deposit fee) plus a modest monthly fee.'
+                ]
+            },
+            {
+                id: 'III-2',
+                topic: 'III',
+                topicTitle: 'Topic III: Types of Checking Accounts (pp. 199–200)',
+                title: '2. Special Feature & Checkless Checking Accounts',
+                figures: 'Seniors, Students, Military Personnel, Rewards Seekers, Overdraft-Prone Consumers.',
+                places: 'Full-Service Banks, Credit Unions, Digital-Only Neobanks.',
+                bullets: [
+                    '<strong>Targeted Group Accounts:</strong> Specialized checking accounts tailored for <strong>students, senior citizens, or military personnel</strong> that offer reduced fees and customized banking perks.',
+                    '<strong>Rewards Checking Accounts:</strong> Earn <strong>points, cash back, or a bonus interest rate</strong> when the customer meets monthly requirements (such as a minimum number of debit card swipes, direct deposit, or using the bank’s credit card).',
+                    '<strong>Premier Checking Accounts:</strong> High-tier accounts for customers with substantial combined balances, bundling perks like <strong>free safe deposit boxes, waived ATM fees, free checks, and financial planning</strong>.',
+                    '<strong>Checkless Checking Accounts:</strong> Modern digital accounts that provide a debit card, online bill pay, and mobile app access <u>without paper checks, helping customers avoid bounced-check and overdraft fees</u>.'
+                ]
+            },
+            {
+                id: 'III-3',
+                topic: 'III',
+                topicTitle: 'Topic III: Types of Checking Accounts (pp. 200–202)',
+                title: '3. Evaluating Checking Accounts & Overdraft Protection',
+                figures: 'Account Applicants, Banks & Credit Unions.',
+                places: 'Branch Lobbies, Online Fee Disclosure Schedules.',
+                bullets: [
+                    '<strong>Four Criteria for Choosing a Checking Account:</strong> Compare (1) <strong>Restrictions</strong> (minimum balance requirements, withdrawal limits), (2) <strong>Fees & Charges</strong> (monthly maintenance, per-check, ATM, and overdraft fees), (3) <strong>Interest Rate (APY) & Compounding</strong>, and (4) <strong>Special Services</strong> (24-hour ATMs, mobile check deposit, overdraft protection).',
+                    '<strong>Understanding Overdraft Protection:</strong> An <strong>overdraft</strong> occurs when you write a check or make a debit purchase exceeding your available account balance, resulting in hefty <em>Non-Sufficient Funds (NSF) fees</em>. <u>Overdraft protection links your checking account to a savings account, credit card, or line of credit</u> to automatically cover shortfalls and prevent bounced checks.'
+                ]
+            },
+            {
+                id: 'IV-1',
+                topic: 'IV',
+                topicTitle: 'Topic IV: Managing Checking & Other Payment Methods (pp. 202–206)',
+                title: '1. Opening, Using & Endorsing Checks Properly',
+                figures: 'Individual Account Owners, Joint Account Co-Owners, Payees, Endorsers.',
+                places: 'Bank New-Account Desks, Checkbooks, Back of Paper Checks.',
+                bullets: [
+                    '<strong>Individual vs. Joint Accounts:</strong> An <strong>individual account</strong> has one owner; a <strong>joint account</strong> has two or more co-owners (usually with <em>rights of survivorship</em>, meaning any co-owner can withdraw all funds and inherits the account if the other dies).',
+                    '<strong>Making Deposits & Writing Checks:</strong> Use a <strong>deposit ticket</strong> to record cash and checks added to your account. When writing a check, always write in ink, record the date, payee, numeric and written dollar amounts clearly, sign it, and <u>immediately subtract the amount in your check register</u>.',
+                    '<strong>Three Types of Check Endorsements:</strong> (1) <strong>Blank Endorsement</strong>—just your signature on the back (<em>risky if lost or stolen, because anyone can cash it</em>); (2) <strong>Restrictive Endorsement</strong>—writing <em>"For Deposit Only"</em> above your signature (<u>safest method for mail or mobile deposits</u>); and (3) <strong>Special Endorsement</strong>—writing <em>"Pay to the order of [Name]"</em> to transfer the check to another person.'
+                ]
+            },
+            {
+                id: 'IV-2',
+                topic: 'IV',
+                topicTitle: 'Topic IV: Managing Checking & Other Payment Methods (pp. 202–206)',
+                title: '2. Monthly Bank Statement Reconciliation',
+                figures: 'Checking Account Holders, Bank Statement Auditors.',
+                places: 'Monthly Bank Statements, Check Registers / Budgeting Apps.',
+                bullets: [
+                    '<strong>Why Reconcile Your Statement?:</strong> A <strong>bank reconciliation</strong> compares your personal check register against the bank’s monthly statement to catch bank errors, detect unauthorized fraud, and know your <em>true spendable balance</em>.',
+                    '<strong>Step 1 — Adjust the Bank Statement Balance:</strong> Start with the ending bank statement balance, <strong>ADD deposits in transit</strong> (deposits you made that have not yet appeared on the statement), and <strong>SUBTRACT outstanding checks</strong> (checks you wrote that have not yet cleared the bank).',
+                    '<strong>Step 2 — Adjust Your Checkbook Register Balance:</strong> Start with your checkbook balance, <strong>ADD interest earned</strong>, and <strong>SUBTRACT monthly service charges, ATM fees, or automatic payments</strong>. <u>When Adjusted Bank Balance equals Adjusted Checkbook Balance, your account is reconciled!</u>'
+                ]
+            },
+            {
+                id: 'IV-3',
+                topic: 'IV',
+                topicTitle: 'Topic IV: Managing Checking & Other Payment Methods (pp. 202–206)',
+                title: '3. Other Guaranteed Payment Methods (Certified, Cashier’s, Money Orders & Traveler’s Checks)',
+                figures: 'Home Buyers, Landlords, Unbanked Consumers, International Travelers.',
+                places: 'Banks, Credit Unions, U.S. Post Offices, Retail Money-Order Counters.',
+                bullets: [
+                    '<strong>Certified Check:</strong> A <strong>personal check</strong> with guaranteed payment—the bank verifies that sufficient funds exist in your account, <em>immediately freezes/deducts that exact amount</em>, and stamps the check "Certified."',
+                    '<strong>Cashier’s Check:</strong> A check <strong>drawn directly on the bank’s own funds</strong> and signed by a bank officer (paid for by the customer upfront plus a fee). <u>Used for large, high-trust transactions like real estate down payments or vehicle purchases</u>.',
+                    '<strong>Money Order:</strong> A prepaid payment certificate purchased with cash at a <em>post office, bank, pharmacy, or grocery store</em>. Ideal for people without a checking account who need to mail a safe, traceable payment.',
+                    '<strong>Traveler’s Checks:</strong> Prepaid checks in fixed denominations (<em>$20, $50, $100</em>) requiring two signatures (one at purchase, one when cashing) that are <u>replaced free if lost or stolen while traveling</u> (largely replaced today by debit/credit cards and digital wallets).'
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // 2. ALL 60 STUDY FLASHCARDS (15 PER TOPIC)
+        // =========================================================================
+        const FLASHCARDS_DATA = [
+            // TOPIC I (15 cards)
+            { topic: 'I', front: 'Main digital payment trends replacing cash and checks (Lesson 5.4)', back: 'Touchless (contactless) payments, digital wallets, and QR code payments.', hint: 'Three modern checkout methods.' },
+            { topic: 'I', front: 'Why do some cities and states ban cashless stores?', back: 'Because refusing cash discriminates against unbanked customers who do not have a bank account or credit card.', hint: 'Protects people without bank accounts.' },
+            { topic: 'I', front: 'Three categories of Payment Alternatives in Exhibit 5-8', back: '1. Electronic Payments, 2. Checking Accounts, and 3. Other Payment Methods.', hint: 'Look at the three columns of Exhibit 5-8.' },
+            { topic: 'I', front: 'Where are debit card purchase funds deducted from?', back: 'Directly from your checking account.', hint: 'Unlike a credit card loan.' },
+            { topic: 'I', front: 'Two ways a debit card can be processed at checkout', back: '1. With your signature (like a credit card), or 2. With your Personal Identification Number (PIN, like an ATM card).', hint: 'Signature vs. PIN.' },
+            { topic: 'I', front: 'Which debit card processing method gives better fraud and dispute protection?', back: 'Processing the debit card with your signature (like a credit card) rather than using a PIN.', hint: 'Sign instead of entering a PIN.' },
+            { topic: 'I', front: 'Risk of using a debit card at a hotel, gas pump, or car rental counter', back: 'The business may freeze (place a hold on) an amount above what you actually spend, which could cause an overdrawn account.', hint: 'Temporary freeze on funds.' },
+            { topic: 'I', front: 'Why should you avoid debit cards for major purchases and online buying?', back: 'Credit cards give you much stronger buyer protection for returns, disputes, and defective products.', hint: 'Credit cards offer better dispute leverage.' },
+            { topic: 'I', front: 'Smart security tip for linking a debit card to a bank account', back: 'Connect your debit card to a separate secondary checking account so a lost or stolen card cannot drain your main account.', hint: 'Separate your main funds from your debit card.' },
+            { topic: 'I', front: 'Four reasons to use a Credit Card instead of a Debit Card', back: '1. Delay payment, 2. Build a credit history, 3. Buy online or make major purchases safely, 4. Earn generous rewards points.', hint: 'See the Credit vs. Debit table on p. 198.' },
+            { topic: 'I', front: 'Three reasons to use a Debit Card instead of a Credit Card', back: '1. Limit spending to available money, 2. Avoid future monthly bills, 3. Avoid interest charges or annual fees.', hint: 'Spend only money you already have.' },
+            { topic: 'I', front: 'Two types of dates banks may ask for in online bill payment', back: '1. Delivery date (when the payee receives the payment) or 2. Processing start date (when the bank begins sending it).', hint: 'Delivery date vs. start date.' },
+            { topic: 'I', front: 'Risks of relying on third-party online payment services', back: 'They often charge a fee and may send payments late, causing late fees, utility service interruption, or a poor credit report.', hint: 'Extra fees and late delivery.' },
+            { topic: 'I', front: 'PayNearMe.com', back: 'An online payment service that allows people without a credit/debit card to shop online and pay with physical cash at a local store.', hint: 'Pay cash locally for online orders.' },
+            { topic: 'I', front: 'Alternative names for a debit card', back: 'Cash card or check card.', hint: 'Listed in Exhibit 5-8.' },
+
+            // TOPIC II (15 cards)
+            { topic: 'II', front: 'How contactless mobile payments complete a purchase', back: 'With a simple tap or wave of a smartphone, tablet, or smartwatch at a point-of-sale (POS) terminal sensor.', hint: 'Tap or wave at checkout.' },
+            { topic: 'II', front: 'Peer-to-Peer (P2P) Payment Apps', back: 'Apps such as PayPal, Square Cash (Cash App), Venmo, and Zelle that allow person-to-person money transfers via email or app.', hint: 'Venmo, Zelle, PayPal, Cash App.' },
+            { topic: 'II', front: 'Typical fee range for using a P2P payment service', back: 'From less than $1 per transaction to a percentage of the amount transferred.', hint: 'Flat small fee or percentage.' },
+            { topic: 'II', front: 'How to protect yourself from P2P app scams', back: 'Beware of unsolicited payment requests, suspicious messages, or businesses demanding P2P payments instead of standard checkout.', hint: 'Never pay unsolicited requests.' },
+            { topic: 'II', front: 'Examples of domestic and international money transfer services', back: 'MoneyGram, TransferWise (Wise), Western Union, and Xoom (delivering funds securely within 1–2 days for a fee).', hint: 'Four companies named on p. 199.' },
+            { topic: 'II', front: 'Cryptocurrency (Cybercurrency / Virtual Currency)', back: 'Digital assets (computer files) used as a payment method or store of value, with over 20,000 varieties such as Bitcoin and Ethereum.', hint: 'Digital files used as money.' },
+            { topic: 'II', front: 'Main reason cryptocurrency’s everyday use as cash is limited', back: 'Extreme price instability/volatility driven by investor speculation (values can swing dramatically overnight).', hint: '$10 today might be $100 or $2 tomorrow.' },
+            { topic: 'II', front: 'Blockchain', back: 'The decentralized peer-to-peer computer network technology that processes and records cryptocurrency transactions.', hint: 'Digital ledger technology.' },
+            { topic: 'II', front: 'Coinbase and Electrum', back: 'Examples of crypto wallet apps used to buy, hold, and manage digital currency assets.', hint: 'Two crypto wallet apps.' },
+            { topic: 'II', front: 'Best way to protect cryptocurrency tokens from online hackers', back: 'Store the digital tokens offline (cold storage).', hint: 'Disconnect from the internet.' },
+            { topic: 'II', front: 'Stored-Value (Prepaid) Cards', back: 'Disposable or reloadable prepaid cards used for transit fares, highway tolls, phone minutes, school lunches, and retail gift cards.', hint: 'Loaded with funds in advance.' },
+            { topic: 'II', front: 'Two major consumer protections of a prepaid gift card', back: '1. Protects your identity because it is not tied to your bank account; 2. If lost or stolen, loss is limited to the card’s balance.', hint: 'Not linked to your checking account.' },
+            { topic: 'II', front: 'How government agencies use prepaid debit cards', back: 'To distribute Social Security benefits and state tax refunds to people without a traditional bank account.', hint: 'Social Security and tax refunds.' },
+            { topic: 'II', front: 'Smart Card', back: 'A card with an embedded microchip used for banking that can also store personal data, past purchases, insurance, and medical history.', hint: 'Contains an embedded computer chip.' },
+            { topic: 'II', front: 'Digital Wallet (Apple Pay, Google Pay)', back: 'A mobile app storing electronic versions of credit and debit cards to enable fast, hygienic contactless transactions.', hint: 'Apple Pay and Google Pay.' },
+
+            // TOPIC III (15 cards)
+            { topic: 'III', front: 'Emerging modern names for a checking account', back: 'Debit account, digital bank account, spending account, or transaction account.', hint: 'Four newer marketing titles.' },
+            { topic: 'III', front: 'Regular Checking Account', back: 'A traditional account with a monthly service charge that can usually be waived by keeping a minimum balance or linking savings.', hint: 'Standard checking with a waivable monthly fee.' },
+            { topic: 'III', front: 'Annual cost of a $7.50 monthly checking service charge', back: '$90 per year ($7.50 × 12 months).', hint: 'Multiply $7.50 by 12.' },
+            { topic: 'III', front: 'Interest-Earning Checking Account', back: 'A checking account that pays interest based on APY, provided you maintain a required minimum balance.', hint: 'Requires a minimum balance to earn APY.' },
+            { topic: 'III', front: 'Annual Percentage Yield (APY)', back: 'The standardized annual rate of return earned on an interest-bearing checking or savings account, factoring in compounding.', hint: 'Abbreviated APY.' },
+            { topic: 'III', front: 'What happens if an interest-earning checking balance drops below the minimum?', back: 'You may forfeit interest for that period and be charged a monthly service fee.', hint: 'Two penalties for falling below minimum.' },
+            { topic: 'III', front: 'Activity Account', back: 'A checking account with no minimum balance requirement that charges a fee for each check written (and sometimes each deposit).', hint: 'Best for people who write very few checks.' },
+            { topic: 'III', front: 'Targeted Group Checking Accounts', back: 'Accounts designed for seniors, students, or military personnel offering lower fees and specialized services.', hint: 'Tailored to age or service status.' },
+            { topic: 'III', front: 'Rewards Checking Account', back: 'An account that earns points, cash back, or a bonus interest rate when you meet requirements like direct deposit and debit card swipes.', hint: 'Earns cash back or points.' },
+            { topic: 'III', front: 'Premier Checking Account', back: 'An upscale account for high-balance customers offering bundled perks like free safe deposit boxes, free checks, and waived ATM fees.', hint: 'Top-tier package account.' },
+            { topic: 'III', front: 'Checkless Checking Account', back: 'A digital transaction account providing a debit card and online bill pay without paper checks, helping prevent bounced checks.', hint: 'No paper checks issued.' },
+            { topic: 'III', front: 'Four key factors to compare when evaluating checking accounts', back: '1. Restrictions (minimum balances), 2. Fees and charges, 3. Interest rate (APY), and 4. Special services.', hint: 'Restrictions, fees, interest, services.' },
+            { topic: 'III', front: 'Overdraft', back: 'Writing a check or making a debit purchase for more money than is available in your checking account.', hint: 'Spending more than your balance.' },
+            { topic: 'III', front: 'Overdraft Protection', back: 'An automatic bank service linking your checking account to a savings account, credit card, or line of credit to cover shortfalls.', hint: 'Prevents bounced-check NSF fees.' },
+            { topic: 'III', front: 'NSF Fee', back: 'Non-Sufficient Funds fee charged by a bank when an account lacks enough money to cover a check or payment.', hint: 'Bounced-check penalty.' },
+
+            // TOPIC IV (15 cards)
+            { topic: 'IV', front: 'Individual Account vs. Joint Account', back: 'An individual account has one owner; a joint account has two or more co-owners who share access and survivorship rights.', hint: 'One owner vs. multiple co-owners.' },
+            { topic: 'IV', front: 'Deposit Ticket', back: 'A bank form used to itemize physical currency, coins, and checks being added to a checking or savings account.', hint: 'Slip completed when depositing funds.' },
+            { topic: 'IV', front: 'Check Register', back: 'A personal record book (or digital ledger) used to track every check written, debit swipe, deposit, and fee.', hint: 'Your personal running balance log.' },
+            { topic: 'IV', front: 'Blank Endorsement', back: 'Signing only your name on the back of a check; risky because anyone holding the check could cash it if lost or stolen.', hint: 'Just a signature on the back.' },
+            { topic: 'IV', front: 'Restrictive Endorsement', back: 'Writing "For Deposit Only" above your signature on the back of a check—the safest endorsement for mail or mobile deposits.', hint: '"For Deposit Only" + signature.' },
+            { topic: 'IV', front: 'Special Endorsement', back: 'Writing "Pay to the order of [Person’s Name]" above your signature to transfer a check to another specific person.', hint: 'Transfers check ownership to someone else.' },
+            { topic: 'IV', front: 'Bank Reconciliation', back: 'The monthly process of comparing your checkbook register with your bank statement so both adjusted balances match.', hint: 'Balancing your checkbook.' },
+            { topic: 'IV', front: 'Deposits in Transit', back: 'Deposits you have recorded in your register that have not yet been processed on the bank’s monthly statement (ADD to bank balance).', hint: 'Added to the bank statement balance.' },
+            { topic: 'IV', front: 'Outstanding Checks', back: 'Checks you have written and recorded that have not yet cleared the bank (SUBTRACT from bank balance).', hint: 'Subtracted from the bank statement balance.' },
+            { topic: 'IV', front: 'How are bank service charges and interest adjusted during reconciliation?', back: 'ADD interest earned and SUBTRACT monthly service/ATM fees from your checkbook register balance.', hint: 'Adjustments made to your checkbook balance.' },
+            { topic: 'IV', front: 'Certified Check', back: 'A personal check guaranteed by the bank after verifying funds and immediately freezing that exact amount in your account.', hint: 'Personal check stamped "Certified" by the bank.' },
+            { topic: 'IV', front: 'Cashier’s Check', back: 'A guaranteed check drawn directly on the bank’s own funds and signed by a bank officer; used for large purchases like real estate.', hint: 'Drawn on the bank’s own account.' },
+            { topic: 'IV', front: 'Money Order', back: 'A prepaid payment certificate bought with cash at a post office, bank, or retail store; ideal for people without a checking account.', hint: 'Purchased at a post office or grocery store.' },
+            { topic: 'IV', front: 'Traveler’s Checks', back: 'Prepaid checks in fixed amounts ($20, $50, $100) requiring two signatures that are replaced free if lost or stolen on a trip.', hint: 'Replaced free if lost while traveling.' },
+            { topic: 'IV', front: 'Stop-Payment Order', back: 'An instruction to your bank not to honor a specific check that was lost, stolen, or issued in error (usually incurs a bank fee).', hint: 'Cancels an uncashed check.' }
+        ];
+
+        // =========================================================================
+        // 3. COMPLETE 180-POINT UNIT TEST DATA (12 SECTIONS x 15 ITEMS = 180 PTS)
+        // =========================================================================
+        const TEST_SECTIONS = [
+            {
+                id: 'S1',
+                topic: 'Topic I: Digital & Electronic Payments',
+                title: 'Section 1: Evolution of Payment Methods & Cashless Legislation',
+                matching: {
+                    items: ['1. Touchless payments', '2. Digital wallets', '3. QR code payments', '4. Cashless store bans', '5. Exhibit 5-8'],
+                    options: [
+                        { key: 'A', text: 'Mobile apps storing virtual versions of debit and credit cards' },
+                        { key: 'B', text: 'Laws preventing retailers from discriminating against unbanked shoppers' },
+                        { key: 'C', text: 'Contactless checkout using NFC tap or wave technology' },
+                        { key: 'D', text: 'Chart organizing Electronic Payments, Checking Accounts, and Other Methods' },
+                        { key: 'E', text: 'Scanning a matrix barcode with a phone camera to complete payment' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. Which three digital trends have largely replaced cash and paper checks for everyday purchases?', opts: ['A. Traveler’s checks, money orders, and bartering', 'B. Touchless payments, digital wallets, and QR code payments', 'C. Gold coins, certified checks, and passbooks', 'D. Layaway plans, COD mail, and IOUs'], ans: 'B' },
+                    { q: '2. Why have several cities and states passed legislation banning cashless stores?', opts: ['A. Cash is faster to count than cards', 'B. Refusing cash discriminates against customers without a bank account', 'C. Digital terminals use too much electricity', 'D. Paper money never loses value'], ans: 'B' },
+                    { q: '3. Which of the following belongs under "Electronic Payments" in Exhibit 5-8?', opts: ['A. Cashier’s check', 'B. Money order', 'C. Stored-value (prepaid) card', 'D. Traveler’s check'], ans: 'C' },
+                    { q: '4. Which of the following belongs under "Other Payment Methods" in Exhibit 5-8?', opts: ['A. Debit card', 'B. Digital wallet', 'C. Certified check', 'D. Checkless checking account'], ans: 'C' },
+                    { q: '5. What three factors have driven the rapid expansion of digital payments?', opts: ['A. Higher taxes, slower mail, and gold shortages', 'B. Technology, improved security, and increased consumer acceptance', 'C. Elimination of all banks, free loans, and zero fraud', 'D. Paper shortages, inflation, and barter laws'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['cashless', 'checks', 'digital wallets', 'security', 'unbanked', 'wire'],
+                    items: [
+                        { prompt: '1. Cash and paper ________, once used for almost all purchases, have largely been replaced by digital methods.', ans: 'checks' },
+                        { prompt: '2. Major digital payment trends include touchless payments, ________, and QR code payments.', ans: 'digital wallets' },
+                        { prompt: '3. Digital payments expanded due to technology, improved ________, and consumer acceptance.', ans: 'security' },
+                        { prompt: '4. Legislation in some areas bans ________ stores.', ans: 'cashless' },
+                        { prompt: '5. Cashless store bans protect ________ consumers who do not have a bank account.', ans: 'unbanked' }
+                    ]
+                }
+            },
+            {
+                id: 'S2',
+                topic: 'Topic I: Digital & Electronic Payments',
+                title: 'Section 2: Debit Card Transactions, Holds & Account Security',
+                matching: {
+                    items: ['1. Debit card', '2. Signature processing', '3. PIN processing', '4. Merchant hold (freeze)', '5. Secondary checking account'],
+                    options: [
+                        { key: 'A', text: 'Using a debit card like an ATM card with a secret numeric code' },
+                        { key: 'B', text: 'Using a debit card like a credit card for stronger fraud and dispute rights' },
+                        { key: 'C', text: 'Card that deducts purchase amounts directly from your checking account' },
+                        { key: 'D', text: 'Separate account linked to a debit card to protect main savings from theft' },
+                        { key: 'E', text: 'Temporary block on funds above actual spending at hotels or gas pumps' }
+                    ],
+                    answers: ['C', 'B', 'A', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. Where does the money come from when you make a purchase with a debit card?', opts: ['A. A 30-day loan from the store', 'B. Deducted directly from your checking account', 'C. A government grant', 'D. Your credit card rewards balance'], ans: 'B' },
+                    { q: '2. How do you get stronger fraud and dispute protection when paying with a debit card?', opts: ['A. Enter your PIN at every terminal', 'B. Process the debit card with your signature (like a credit card)', 'C. Write your PIN on the back of the card', 'D. Pay only at gas pumps'], ans: 'B' },
+                    { q: '3. Which three businesses commonly place a temporary hold on your bank account above your actual purchase amount?', opts: ['A. Libraries, post offices, and schools', 'B. Hotels, gas stations, and car rental agencies', 'C. Bakeries, bookstores, and pharmacies', 'D. Movie theaters, parks, and museums'], ans: 'B' },
+                    { q: '4. What financial problem can a merchant’s temporary hold on your debit card cause?', opts: ['A. An overdrawn account if other payments clear while funds are frozen', 'B. Automatic upgrade to a premier account', 'C. Higher APY interest on your balance', 'D. Elimination of monthly fees'], ans: 'A' },
+                    { q: '5. Why should you connect your debit card to a bank account separate from your main checking account?', opts: ['A. To earn double interest', 'B. To protect your main account from being drained if the debit card is lost or stolen', 'C. Because banks prohibit debit cards on main accounts', 'D. To avoid paying taxes'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['checking', 'credit', 'hold', 'overdrawn', 'PIN', 'separate'],
+                    items: [
+                        { prompt: '1. Debit card purchases deduct funds directly from your ________ account.', ans: 'checking' },
+                        { prompt: '2. A debit card can be used with your signature or with your ________.', ans: 'PIN' },
+                        { prompt: '3. Processing a debit card like a ________ card provides greater security against fraud or disputes.', ans: 'credit' },
+                        { prompt: '4. Hotels and gas stations may place a temporary ________ on funds, risking an ________ account.', ans: 'hold' },
+                        { prompt: '5. Link your debit card to a ________ bank account to protect your main funds if the card is stolen.', ans: 'separate' }
+                    ]
+                }
+            },
+            {
+                id: 'S3',
+                topic: 'Topic I: Digital & Electronic Payments',
+                title: 'Section 3: Credit Cards vs. Debit Cards & Online Bill Payments',
+                matching: {
+                    items: ['1. Credit card advantage', '2. Debit card advantage', '3. Online payment delivery date', '4. Third-party payment risk', '5. PayNearMe.com'],
+                    options: [
+                        { key: 'A', text: 'Limits spending to available money and avoids interest or annual fees' },
+                        { key: 'B', text: 'Date when the billed amount is actually received by the payee' },
+                        { key: 'C', text: 'Builds credit history and gives superior protection for online/major buys' },
+                        { key: 'D', text: 'Service allowing unbanked shoppers to buy online and pay cash at a local store' },
+                        { key: 'E', text: 'May charge fees and send payments late, causing utility shutoffs' }
+                    ],
+                    answers: ['C', 'A', 'B', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. Which situation is best suited for using a CREDIT card rather than a debit card?', opts: ['A. Trying to avoid future monthly bills', 'B. Buying online or making a major purchase where return/defect protection matters', 'C. Preventing yourself from spending more than your current cash balance', 'D. Avoiding all possibility of interest charges'], ans: 'B' },
+                    { q: '2. Which situation is best suited for using a DEBIT card rather than a credit card?', opts: ['A. Building a credit history from scratch', 'B. Delaying payment until next month', 'C. Limiting spending to available funds and avoiding interest or annual fees', 'D. Earning maximum travel rewards points'], ans: 'C' },
+                    { q: '3. If your bank’s online bill pay asks for the date to START processing a payment, what should you do?', opts: ['A. Select the exact due date', 'B. Select an earlier date so the payment arrives at the payee by the due date', 'C. Wait until the day after the due date', 'D. Always pay a third-party fee'], ans: 'B' },
+                    { q: '4. What is a drawback of linking online bill payments directly to your checking account instead of a credit card?', opts: ['A. You have less leverage when disputing a transaction', 'B. Payments take six months to arrive', 'C. Checking accounts are illegal for online bills', 'D. You must visit a bank branch in person'], ans: 'A' },
+                    { q: '5. How does PayNearMe.com help people without a credit or debit card?', opts: ['A. It mails them a free credit card', 'B. It lets them make an online purchase and pay with physical cash at a local store', 'C. It lends them cryptocurrency', 'D. It waives all utility bills'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['credit history', 'due date', 'fees', 'leverage', 'PayNearMe.com', 'rewards'],
+                    items: [
+                        { prompt: '1. Using a credit card wisely helps build a strong ________ and earns generous ________ points.', ans: 'credit history' },
+                        { prompt: '2. Linking an online transaction to a checking account gives less ________ when disputing a charge.', ans: 'leverage' },
+                        { prompt: '3. Schedule online payments early enough to be received by the payee on or before the ________.', ans: 'due date' },
+                        { prompt: '4. Third-party payment services often charge extra ________ and risk sending payments late.', ans: 'fees' },
+                        { prompt: '5. Shoppers without a bank card can buy online and pay cash locally using ________.', ans: 'PayNearMe.com' }
+                    ]
+                }
+            },
+            {
+                id: 'S4',
+                topic: 'Topic II: Mobile Transfers, FinTech & Smart Cards',
+                title: 'Section 1: Mobile Transfers, Peer-to-Peer (P2P) Apps & Wire Services',
+                matching: {
+                    items: ['1. POS terminal sensor', '2. Peer-to-peer (P2P) apps', '3. P2P transfer fees', '4. P2P scam red flag', '5. Western Union & Wise'],
+                    options: [
+                        { key: 'A', text: 'PayPal, Venmo, Zelle, and Square Cash (Cash App)' },
+                        { key: 'B', text: 'Unsolicited payment requests or businesses refusing normal checkout' },
+                        { key: 'C', text: 'Point-of-sale reader where a tap or wave of a phone completes payment' },
+                        { key: 'D', text: 'Global money transfer services delivering funds within 1–2 days for a fee' },
+                        { key: 'E', text: 'Range from under $1 per transaction to a percentage of the amount sent' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. How does a mobile device complete a contactless purchase at a retail store?', opts: ['A. By printing a paper check', 'B. By a tap or wave of the phone at the point-of-sale terminal sensor', 'C. By calling the bank manager', 'D. By inserting a magnetic cassette'], ans: 'B' },
+                    { q: '2. Which group lists popular peer-to-peer (P2P) payment apps mentioned in the lesson?', opts: ['A. Coinbase, Electrum, Bitcoin, and Tether', 'B. PayPal, Square Cash, Venmo, and Zelle', 'C. Apple Pay, Google Pay, Visa, and Mastercard', 'D. MoneyGram, Xoom, Amtrak, and USPS'], ans: 'B' },
+                    { q: '3. What do most P2P mobile apps require you to register before sending money?', opts: ['A. Your passport and birth certificate', 'B. Debit card, credit card, or bank account information', 'C. A physical signature on file at the post office', 'D. A minimum $5,000 deposit'], ans: 'B' },
+                    { q: '4. Why must consumers exercise extreme caution with P2P payment requests?', opts: ['A. P2P scams are increasing, and unsolicited requests are often fraudulent', 'B. P2P apps take 30 days to send money', 'C. P2P apps are banned in the United States', 'D. P2P transfers automatically deduct taxes'], ans: 'A' },
+                    { q: '5. Which services specialize in securely transferring money across the country or around the world within 1–2 days?', opts: ['A. PayNearMe and Apple Pay', 'B. MoneyGram, TransferWise, Western Union, and Xoom', 'C. Coinbase and Electrum', 'D. Regular and Activity accounts'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['email', 'percentage', 'scams', 'tap', 'Western Union', 'Zelle'],
+                    items: [
+                        { prompt: '1. A simple ________ or wave of your phone at a point-of-sale sensor completes a mobile purchase.', ans: 'tap' },
+                        { prompt: '2. Peer-to-peer (P2P) payments can be sent by ________ or through apps like PayPal, Venmo, and ________.', ans: 'email' },
+                        { prompt: '3. P2P fees can range from less than a dollar to a ________ of the amount transferred.', ans: 'percentage' },
+                        { prompt: '4. Beware of unsolicited payment requests because ________ involving P2P apps are increasing.', ans: 'scams' },
+                        { prompt: '5. Global money transfer companies include MoneyGram, TransferWise, Xoom, and ________.', ans: 'Western Union' }
+                    ]
+                }
+            },
+            {
+                id: 'S5',
+                topic: 'Topic II: Mobile Transfers, FinTech & Smart Cards',
+                title: 'Section 2: FinTech Focus: Cryptocurrency, Blockchain & Wallets',
+                matching: {
+                    items: ['1. Cryptocurrency', '2. Price volatility', '3. Blockchain', '4. Coinbase & Electrum', '5. Offline (cold) storage'],
+                    options: [
+                        { key: 'A', text: 'Rapid investor-driven price swings that limit everyday use as cash' },
+                        { key: 'B', text: 'Crypto wallet apps used to buy and hold digital currency assets' },
+                        { key: 'C', text: 'Digital assets using computer files as money or a store of value' },
+                        { key: 'D', text: 'Keeping crypto tokens disconnected from the internet to prevent hacking' },
+                        { key: 'E', text: 'Peer-to-peer network technology maintaining digital transaction records' }
+                    ],
+                    answers: ['C', 'A', 'E', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. Roughly how many cryptocurrencies have existed in recent years?', opts: ['A. Fewer than 10', 'B. About 100', 'C. More than 20,000', 'D. Exactly 500'], ans: 'C' },
+                    { q: '2. What is the biggest factor limiting cryptocurrency’s everyday use as a replacement for cash?', opts: ['A. It cannot be sent online', 'B. Extreme value instability caused by investor speculation', 'C. Only banks are allowed to own it', 'D. Transactions take several weeks'], ans: 'B' },
+                    { q: '3. What technology processes cryptocurrency transactions and maintains digital records in a peer-to-peer network?', opts: ['A. Magnetic stripe encoding', 'B. Blockchain', 'C. Cashier’s ledger', 'D. Optical microfilm'], ans: 'B' },
+                    { q: '4. Why do some cryptocurrency owners store their tokens offline?', opts: ['A. To earn higher interest', 'B. It offers greater protection from online hackers', 'C. Offline tokens never change in price', 'D. It is required by retail stores'], ans: 'B' },
+                    { q: '5. Which institutions are planning to issue their own official digital currencies in the future?', opts: ['A. Local grocery chains', 'B. The U.S. Federal Reserve and central banks of other countries', 'C. Car rental companies', 'D. School cafeterias'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['Bitcoin', 'blockchain', 'Coinbase', 'Federal Reserve', 'hackers', 'instability'],
+                    items: [
+                        { prompt: '1. Well-known cryptocurrencies include ________, Cardano, Ethereum, Litecoin, and Tether.', ans: 'Bitcoin' },
+                        { prompt: '2. Extreme price ________ has limited cryptocurrency’s use as an everyday version of cash.', ans: 'instability' },
+                        { prompt: '3. Crypto transactions are processed using ________ technology in a peer-to-peer network.', ans: 'blockchain' },
+                        { prompt: '4. ________ and Electrum are two popular crypto wallet apps.', ans: 'Coinbase' },
+                        { prompt: '5. Storing tokens offline protects against ________, while the U.S. ________ plans its own digital currency.', ans: 'hackers' }
+                    ]
+                }
+            },
+            {
+                id: 'S6',
+                topic: 'Topic II: Mobile Transfers, FinTech & Smart Cards',
+                title: 'Section 3: Stored-Value Cards, Smart Cards & Digital Wallets',
+                matching: {
+                    items: ['1. Stored-value card', '2. Prepaid card fee risk', '3. Prepaid identity benefit', '4. Smart card', '5. Digital wallet'],
+                    options: [
+                        { key: 'A', text: 'Contains an embedded chip storing banking, insurance, and medical data' },
+                        { key: 'B', text: 'Prepaid card used for transit, tolls, school lunches, or retail gifts' },
+                        { key: 'C', text: 'Apple Pay or Google Pay storing electronic versions of credit/debit cards' },
+                        { key: 'D', text: 'Activation charges, ATM fees, and per-transaction costs' },
+                        { key: 'E', text: 'Not tied to your bank account; loss is capped at the card’s balance' }
+                    ],
+                    answers: ['B', 'D', 'E', 'A', 'C']
+                },
+                mc: [
+                    { q: '1. Which of the following is a common use for stored-value (prepaid) cards?', opts: ['A. Mortgage loans', 'B. Transit fares, highway tolls, school lunches, and retail gift cards', 'C. International wire transfers', 'D. Stock market margin accounts'], ans: 'B' },
+                    { q: '2. How does a prepaid gift card protect you when shopping?', opts: ['A. It is not tied to your bank account, and loss is limited to the value on the card', 'B. It automatically refunds double your money', 'C. It builds your credit score rapidly', 'D. It never expires or has fees'], ans: 'A' },
+                    { q: '3. How do government agencies use prepaid debit cards for citizens without bank accounts?', opts: ['A. To pay parking tickets', 'B. To distribute Social Security benefits and state tax refunds', 'C. To collect property taxes', 'D. To issue passports'], ans: 'B' },
+                    { q: '4. What distinguishes a "smart card" from a standard magnetic-stripe card?', opts: ['A. It has an embedded microchip that can store banking, insurance, and medical data', 'B. It is made of solid gold', 'C. It only works at ATMs', 'D. It cannot be used in stores'], ans: 'A' },
+                    { q: '5. Why have digital wallets like Apple Pay and Google Pay gained extra popularity?', opts: ['A. They allow hygienic, contactless transactions without touching terminals', 'B. They eliminate the need for a phone battery', 'C. They give free cash every time you open the app', 'D. They replace checking accounts completely'], ans: 'A' }
+                ],
+                fib: {
+                    wordBank: ['activation', 'Apple Pay', 'chip', 'identity', 'reloaded', 'Social Security'],
+                    items: [
+                        { prompt: '1. While some stored-value cards are disposable, others can be ________ with additional funds.', ans: 'reloaded' },
+                        { prompt: '2. Some prepaid debit cards charge ________ fees, ATM fees, and transaction costs.', ans: 'activation' },
+                        { prompt: '3. A prepaid gift card protects your ________ because it is not linked to your bank account.', ans: 'identity' },
+                        { prompt: '4. Government recipients may receive ________ benefits on a prepaid debit card.', ans: 'Social Security' },
+                        { prompt: '5. A smart card uses an embedded ________, whereas digital wallets like ________ store virtual cards on a phone.', ans: 'chip' }
+                    ]
+                }
+            },
+            {
+                id: 'S7',
+                topic: 'Topic III: Types of Checking Accounts',
+                title: 'Section 1: Emerging Titles & Traditional Checking Accounts',
+                matching: {
+                    items: ['1. Emerging checking names', '2. Regular checking account', '3. $7.50/month service fee', '4. Interest-earning checking', '5. Activity account'],
+                    options: [
+                        { key: 'A', text: 'Requires a minimum balance to earn APY and avoid service fees' },
+                        { key: 'B', text: 'Costs $90 per year if not waived by a minimum balance' },
+                        { key: 'C', text: 'Debit account, digital bank account, spending account, transaction account' },
+                        { key: 'D', text: 'No minimum balance, but charges a fee for each check written' },
+                        { key: 'E', text: 'Standard checking whose monthly fee is waived via minimum balance or student status' }
+                    ],
+                    answers: ['C', 'E', 'B', 'A', 'D']
+                },
+                mc: [
+                    { q: '1. Which of the following is an emerging alternative name for a checking account?', opts: ['A. Certificate of deposit', 'B. Spending account or transaction account', 'C. Mutual fund', 'D. Mortgage escrow'], ans: 'B' },
+                    { q: '2. How much does a $7.50 monthly checking service charge cost over a full year?', opts: ['A. $45.00', 'B. $75.00', 'C. $90.00', 'D. $120.00'], ans: 'C' },
+                    { q: '3. What happens if your balance in an interest-earning checking account falls below the required minimum?', opts: ['A. You earn double interest', 'B. You may lose interest for that period and incur a monthly service charge', 'C. The bank closes your savings account', 'D. Your checks become certified'], ans: 'B' },
+                    { q: '4. Who is an "activity account" best designed for?', opts: ['A. People who write 100 checks every week', 'B. People who write only a few checks each month and cannot maintain a minimum balance', 'C. Large corporations', 'D. People seeking high interest rates'], ans: 'B' },
+                    { q: '5. What rate metric should consumers compare when selecting an interest-earning checking account?', opts: ['A. Annual Percentage Yield (APY)', 'B. Mortgage APR', 'C. Sales tax rate', 'D. Exchange rate'], ans: 'A' }
+                ],
+                fib: {
+                    wordBank: ['$90', 'Activity', 'APY', 'minimum balance', 'student', 'transaction'],
+                    items: [
+                        { prompt: '1. Modern banks often call checking accounts spending accounts or ________ accounts.', ans: 'transaction' },
+                        { prompt: '2. A monthly service charge of $7.50 adds up to ________ per year.', ans: '$90' },
+                        { prompt: '3. Regular checking fees may be waived with a ________ or through a free ________ account.', ans: 'minimum balance' },
+                        { prompt: '4. When selecting an interest-earning checking account, compare the ________.', ans: 'APY' },
+                        { prompt: '5. ________ accounts require no minimum balance but charge a fee for each check written.', ans: 'Activity' }
+                    ]
+                }
+            },
+            {
+                id: 'S8',
+                topic: 'Topic III: Types of Checking Accounts',
+                title: 'Section 2: Special Feature & Checkless Checking Accounts',
+                matching: {
+                    items: ['1. Targeted group account', '2. Rewards checking account', '3. Premier checking account', '4. Checkless checking account', '5. Rewards requirement'],
+                    options: [
+                        { key: 'A', text: 'Earns points, cash back, or bonus interest for meeting monthly activity rules' },
+                        { key: 'B', text: 'Tailored for seniors, students, or military personnel with lower fees' },
+                        { key: 'C', text: 'Digital account with no paper checks, helping prevent overdrafts' },
+                        { key: 'D', text: 'Using direct deposit and making a set number of debit card transactions' },
+                        { key: 'E', text: 'Bundles perks like safe deposit boxes, free checks, and waived ATM fees' }
+                    ],
+                    answers: ['B', 'A', 'E', 'C', 'D']
+                },
+                mc: [
+                    { q: '1. Which groups commonly qualify for "targeted group" checking accounts with lower fees?', opts: ['A. Seniors, students, and military personnel', 'B. Professional athletes only', 'C. Foreign tourists only', 'D. Real estate developers only'], ans: 'A' },
+                    { q: '2. What benefits can a "rewards checking account" provide?', opts: ['A. Free airline tickets every week', 'B. Points, cash back, or a bonus interest rate', 'C. Unlimited overdrafts with no repayment', 'D. Free cryptocurrency'], ans: 'B' },
+                    { q: '3. Which requirement is commonly needed to earn rewards in a rewards checking account?', opts: ['A. Writing 50 paper checks per day', 'B. Direct deposit and a certain number of debit card transactions', 'C. Closing all savings accounts', 'D. Paying a $500 annual fee'], ans: 'B' },
+                    { q: '4. What extra services are typically included in a "premier checking account"?', opts: ['A. Free groceries', 'B. Safe deposit boxes, waived ATM fees, and financial services', 'C. Free car insurance', 'D. Unlimited cryptocurrency'], ans: 'B' },
+                    { q: '5. What is a major advantage of a "checkless checking account"?', opts: ['A. You never need a debit card', 'B. Having no paper checks helps customers avoid bounced-check and overdraft fees', 'C. It pays 25% interest', 'D. It requires a $50,000 minimum balance'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['cash back', 'Checkless', 'direct deposit', 'military', 'overdraft', 'Premier'],
+                    items: [
+                        { prompt: '1. Targeted group accounts offer lower fees for seniors, students, or ________ personnel.', ans: 'military' },
+                        { prompt: '2. Rewards checking accounts earn points, ________, or bonus interest.', ans: 'cash back' },
+                        { prompt: '3. Earning checking rewards often requires ________ and a minimum number of debit transactions.', ans: 'direct deposit' },
+                        { prompt: '4. ________ checking accounts bundle services like safe deposit boxes for high-balance customers.', ans: 'Premier' },
+                        { prompt: '5. ________ checking accounts eliminate paper checks to help prevent ________ fees.', ans: 'Checkless' }
+                    ]
+                }
+            },
+            {
+                id: 'S9',
+                topic: 'Topic III: Types of Checking Accounts',
+                title: 'Section 3: Evaluating Checking Accounts & Overdraft Protection',
+                matching: {
+                    items: ['1. Restrictions', '2. Fees and charges', '3. Interest & compounding', '4. Special services', '5. Overdraft protection'],
+                    options: [
+                        { key: 'A', text: 'Monthly maintenance, per-check, ATM, and non-sufficient funds charges' },
+                        { key: 'B', text: 'Minimum balance requirements and limits on withdrawals or checks' },
+                        { key: 'C', text: 'Automatic transfer from linked savings or credit to cover a shortfall' },
+                        { key: 'D', text: '24-hour ATMs, mobile check deposit, and online bill payment' },
+                        { key: 'E', text: 'How often earned interest is calculated and added to your balance' }
+                    ],
+                    answers: ['B', 'A', 'E', 'D', 'C']
+                },
+                mc: [
+                    { q: '1. Which of the following is NOT one of the four main factors for evaluating checking accounts?', opts: ['A. Restrictions (such as minimum balances)', 'B. Fees and charges', 'C. Interest rate (APY) and special services', 'D. The color of the bank’s logo'], ans: 'D' },
+                    { q: '2. What is an "overdraft"?', opts: ['A. Depositing more than $10,000 in cash', 'B. Writing a check or making a debit purchase exceeding your available account balance', 'C. Earning interest on a savings account', 'D. Ordering a new box of checks'], ans: 'B' },
+                    { q: '3. What fee do banks charge when a check bounces due to lack of funds?', opts: ['A. APY bonus fee', 'B. Non-Sufficient Funds (NSF) / overdraft fee', 'C. Direct deposit fee', 'D. Cashier’s fee'], ans: 'B' },
+                    { q: '4. How does overdraft protection prevent bounced checks?', opts: ['A. It deletes the purchase from history', 'B. It automatically transfers funds from a linked savings account, credit card, or line of credit', 'C. It asks the merchant to wait a year', 'D. It closes your account immediately'], ans: 'B' },
+                    { q: '5. Why is comparing monthly fees important even if an account offers special perks?', opts: ['A. High monthly or ATM fees can easily outweigh small interest earnings', 'B. Fees are illegal at credit unions', 'C. Perks never work online', 'D. Banks refund all fees automatically'], ans: 'A' }
+                ],
+                fib: {
+                    wordBank: ['balance', 'compounding', 'NSF', 'Overdraft protection', 'Restrictions', 'savings'],
+                    items: [
+                        { prompt: '1. ________ include minimum balance requirements and limits on monthly transactions.', ans: 'Restrictions' },
+                        { prompt: '2. When comparing interest-earning accounts, check both the APY and the frequency of ________.', ans: 'compounding' },
+                        { prompt: '3. An overdraft occurs when you spend more than your available account ________.', ans: 'balance' },
+                        { prompt: '4. Bouncing a check triggers an expensive ________ (Non-Sufficient Funds) fee.', ans: 'NSF' },
+                        { prompt: '5. ________ links your checking account to a ________ account or line of credit to cover shortfalls.', ans: 'Overdraft protection' }
+                    ]
+                }
+            },
+            {
+                id: 'S10',
+                topic: 'Topic IV: Managing Checking & Other Payment Methods',
+                title: 'Section 1: Opening, Using & Endorsing Checks Properly',
+                matching: {
+                    items: ['1. Joint account', '2. Deposit ticket', '3. Blank endorsement', '4. Restrictive endorsement', '5. Special endorsement'],
+                    options: [
+                        { key: 'A', text: 'Writing "For Deposit Only" above your signature; safest for mail/mobile deposit' },
+                        { key: 'B', text: 'Account with two or more co-owners sharing access and survivorship rights' },
+                        { key: 'C', text: 'Signing only your name on the back; risky because anyone can cash it' },
+                        { key: 'D', text: 'Writing "Pay to the order of [Name]" to transfer a check to someone else' },
+                        { key: 'E', text: 'Bank slip itemizing cash and checks being added to your account' }
+                    ],
+                    answers: ['B', 'E', 'C', 'A', 'D']
+                },
+                mc: [
+                    { q: '1. What does "rights of survivorship" mean on a joint checking account?', opts: ['A. Only one owner can ever write checks', 'B. Any co-owner can withdraw funds and inherits the account if the other owner dies', 'C. The bank keeps the money if one owner moves', 'D. Both owners must sign every debit purchase'], ans: 'B' },
+                    { q: '2. Which type of check endorsement is the SAFEST when mailing a check or using mobile deposit?', opts: ['A. Blank endorsement (signature only)', 'B. Restrictive endorsement ("For Deposit Only" + signature)', 'C. Leaving the back completely blank', 'D. Writing your PIN on the back'], ans: 'B' },
+                    { q: '3. Why is a "blank endorsement" risky if you lose the check on the way to the bank?', opts: ['A. The check expires in 5 minutes', 'B. Anyone who finds the check could potentially cash or deposit it', 'C. The bank charges a $100 blank fee', 'D. It voids the routing number'], ans: 'B' },
+                    { q: '4. How do you transfer a check payable to you over to another person?', opts: ['A. Use a special endorsement ("Pay to the order of [Name]" + your signature)', 'B. Cross out the bank’s name', 'C. Use a blank endorsement', 'D. Tear off the bottom corner'], ans: 'A' },
+                    { q: '5. What should you do immediately after writing a check or swiping your debit card?', opts: ['A. Subtract the amount in your check register to keep an accurate balance', 'B. Throw away the receipt', 'C. Wait until next year to check your balance', 'D. Order a cashier’s check'], ans: 'A' }
+                ],
+                fib: {
+                    wordBank: ['Blank', 'For Deposit Only', 'ink', 'joint', 'register', 'Special'],
+                    items: [
+                        { prompt: '1. Two or more co-owners share access to a ________ checking account.', ans: 'joint' },
+                        { prompt: '2. Always write checks in ________ and immediately record the amount in your check ________.', ans: 'ink' },
+                        { prompt: '3. A ________ endorsement consists only of your signature on the back of the check.', ans: 'Blank' },
+                        { prompt: '4. Writing "________" above your signature creates a safe restrictive endorsement.', ans: 'For Deposit Only' },
+                        { prompt: '5. A ________ endorsement transfers a check to another named person.', ans: 'Special' }
+                    ]
+                }
+            },
+            {
+                id: 'S11',
+                topic: 'Topic IV: Managing Checking & Other Payment Methods',
+                title: 'Section 2: Monthly Bank Statement Reconciliation',
+                matching: {
+                    items: ['1. Bank reconciliation', '2. Deposits in transit', '3. Outstanding checks', '4. Interest earned', '5. Bank service charges'],
+                    options: [
+                        { key: 'A', text: 'Checks written by you that have not yet cleared the bank (SUBTRACT from bank)' },
+                        { key: 'B', text: 'Added to your checkbook register balance during reconciliation' },
+                        { key: 'C', text: 'Deposits made by you not yet shown on statement (ADD to bank)' },
+                        { key: 'D', text: 'Subtracted from your checkbook register balance during reconciliation' },
+                        { key: 'E', text: 'Process of comparing check register and bank statement until balances match' }
+                    ],
+                    answers: ['E', 'C', 'A', 'B', 'D']
+                },
+                mc: [
+                    { q: '1. What is the main purpose of performing a monthly bank reconciliation?', opts: ['A. To apply for a mortgage', 'B. To catch errors, spot fraud, and confirm your true spendable checking balance', 'C. To cancel your debit card', 'D. To avoid paying taxes'], ans: 'B' },
+                    { q: '2. During reconciliation, how do you handle "deposits in transit" (deposits not yet on the bank statement)?', opts: ['A. ADD them to the ending bank statement balance', 'B. SUBTRACT them from the ending bank statement balance', 'C. Ignore them forever', 'D. Subtract them from your checkbook'], ans: 'A' },
+                    { q: '3. During reconciliation, how do you handle "outstanding checks" (checks you wrote that haven’t cleared)?', opts: ['A. ADD them to the bank statement balance', 'B. SUBTRACT them from the ending bank statement balance', 'C. Add them to your checkbook balance', 'D. Void them at the post office'], ans: 'B' },
+                    { q: '4. How are monthly bank service charges and ATM fees adjusted during reconciliation?', opts: ['A. Added to the bank statement', 'B. Subtracted from your checkbook register balance', 'C. Added to your checkbook balance', 'D. Ignored until December'], ans: 'B' },
+                    { q: '5. How do you know your bank reconciliation is complete and accurate?', opts: ['A. When the Adjusted Bank Balance equals the Adjusted Checkbook Balance', 'B. When both balances equal zero', 'C. When you have no outstanding checks', 'D. When the bank sends a cashier’s check'], ans: 'A' }
+                ],
+                fib: {
+                    wordBank: ['ADD', 'Adjusted Checkbook Balance', 'in transit', 'outstanding', 'reconciliation', 'SUBTRACT'],
+                    items: [
+                        { prompt: '1. Comparing your check register to your monthly bank statement is called a bank ________.', ans: 'reconciliation' },
+                        { prompt: '2. To the bank statement balance, ________ deposits ________ that have not yet been recorded.', ans: 'ADD' },
+                        { prompt: '3. From the bank statement balance, ________ any ________ checks that have not yet cleared.', ans: 'SUBTRACT' },
+                        { prompt: '4. Subtract bank service fees and add interest earned to find your ________.', ans: 'Adjusted Checkbook Balance' },
+                        { prompt: '5. Deposits ________ are recent deposits made after the bank statement’s closing date.', ans: 'in transit' }
+                    ]
+                }
+            },
+            {
+                id: 'S12',
+                topic: 'Topic IV: Managing Checking & Other Payment Methods',
+                title: 'Section 3: Other Guaranteed Payment Methods',
+                matching: {
+                    items: ['1. Certified check', '2. Cashier’s check', '3. Money order', '4. Traveler’s checks', '5. Real estate down payment'],
+                    options: [
+                        { key: 'A', text: 'Guaranteed check drawn directly on the bank’s own funds' },
+                        { key: 'B', text: 'Prepaid certificate bought at a post office or store; ideal without a bank account' },
+                        { key: 'C', text: 'Personal check stamped by the bank after freezing the exact amount in your account' },
+                        { key: 'D', text: 'High-trust large transaction commonly requiring a cashier’s or certified check' },
+                        { key: 'E', text: 'Fixed-denomination checks requiring two signatures, replaced free if stolen' }
+                    ],
+                    answers: ['C', 'A', 'B', 'E', 'D']
+                },
+                mc: [
+                    { q: '1. How does a bank guarantee a "certified check"?', opts: ['A. It prints it on gold paper', 'B. It verifies sufficient funds in your personal account, freezes that amount, and stamps it certified', 'C. It borrows money from the Federal Reserve', 'D. It requires two signatures from a postmaster'], ans: 'B' },
+                    { q: '2. Whose funds is a "cashier’s check" drawn directly upon?', opts: ['A. The bank’s own funds (signed by a bank officer)', 'B. A cryptocurrency wallet', 'C. The U.S. Post Office', 'D. The recipient’s savings account'], ans: 'A' },
+                    { q: '3. Where can a consumer without a checking account easily purchase a "money order" with cash?', opts: ['A. At a post office, bank, pharmacy, or grocery store', 'B. Only at the Federal Reserve', 'C. Only on a blockchain network', 'D. Only at a car rental counter'], ans: 'A' },
+                    { q: '4. What is the key security feature of "traveler’s checks"?', opts: ['A. They require two signatures (at purchase and when cashing) and are replaced free if lost or stolen', 'B. They earn 15% APY interest', 'C. They work only at gas stations', 'D. They require a PIN at every hotel'], ans: 'A' },
+                    { q: '5. Which payment methods have largely replaced traveler’s checks for modern travelers?', opts: ['A. Barter and gold dust', 'B. Debit/credit cards, ATMs, and digital wallets', 'C. Activity accounts only', 'D. Paper savings bonds'], ans: 'B' }
+                ],
+                fib: {
+                    wordBank: ['bank’s own', 'Certified', 'money order', 'post office', 'signatures', 'Traveler’s'],
+                    items: [
+                        { prompt: '1. A ________ check is a personal check whose funds are immediately frozen and guaranteed by the bank.', ans: 'Certified' },
+                        { prompt: '2. A cashier’s check is drawn directly on the ________ funds and signed by a bank officer.', ans: 'bank’s own' },
+                        { prompt: '3. People without a checking account often buy a ________ at a ________ or grocery store.', ans: 'money order' },
+                        { prompt: '4. ________ checks come in fixed denominations ($20, $50, $100) and are replaced free if stolen.', ans: 'Traveler’s' },
+                        { prompt: '5. Traveler’s checks protect against theft by requiring two matching ________.', ans: 'signatures' }
+                    ]
+                }
+            }
+        ];
+
+        // =========================================================================
+        // 4. STATE VARIABLES & STORAGE KEYS
+        // =========================================================================
+        const STORAGE_KEYS = {
+            respondent: 'pf_ch5_l4_respondent_v1',
+            mastered: 'pf_ch5_l4_mastered_fc_v1',
+            formConfig: 'pf_ch5_l4_form_cfg_v1'
+        };
+
+        let currentTab = 'outline';
+        let spotlightActive = false;
+        let filteredDeck = [...FLASHCARDS_DATA];
+        let currentCardIdx = 0;
+        let isCardFlipped = false;
+        let hintVisible = false;
+        let masteredSet = new Set();
+        let lastGradedResult = null;
+
+        // =========================================================================
+        // 5. TOP HEADER HOVER/PIN & TAB NAVIGATION
+        // =========================================================================
+        function toggleHeaderPin() {
+            const zone = document.getElementById('top-header-zone');
+            const pinBtn = document.getElementById('btn-pin-header');
+            if (!zone) return;
+            const pinned = zone.classList.toggle('header-pinned');
+            if (pinBtn) {
+                pinBtn.textContent = pinned ? 'Unpin Bar' : 'Pin Bar';
+            }
+        }
+
+        function switchTab(tabName) {
+            currentTab = tabName;
+            const views = ['outline', 'flashcards', 'test'];
+            const labels = {
+                outline: '1. Study Outline',
+                flashcards: '2. Flashcards (60)',
+                test: '3. Unit Test (180 Pts)'
+            };
+
+            views.forEach((v) => {
+                const viewEl = document.getElementById(`view-${v}`);
+                const btnEl = document.getElementById(`tab-${v}`);
+                if (viewEl) {
+                    viewEl.classList.toggle('hidden', v !== tabName);
+                }
+                if (btnEl) {
+                    if (v === tabName) {
+                        btnEl.className = 'tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-amber-500 text-slate-950 shadow';
+                    } else {
+                        btnEl.className = 'tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700';
+                    }
+                }
+            });
+
+            const pill = document.getElementById('active-tab-pill');
+            const handleLabel = document.getElementById('handle-tab-label');
+            if (pill) pill.textContent = labels[tabName] || '';
+            if (handleLabel) handleLabel.textContent = `Ch. 5 Lesson 5.4 • ${labels[tabName] || ''}`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3400);
+        }
+
+        function escapeHtml(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        // =========================================================================
+        // 6. RESPONDENT IDENTITY PERSISTENCE
+        // =========================================================================
+        function loadRespondentInfo() {
+            const nameEl = document.getElementById('student-name');
+            const emailEl = document.getElementById('student-email');
+            const dateEl = document.getElementById('student-date');
+            const today = new Date().toISOString().split('T')[0];
+
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEYS.respondent) || '{}');
+                if (nameEl && saved.name) nameEl.value = saved.name;
+                if (emailEl && saved.email) emailEl.value = saved.email;
+                if (dateEl) dateEl.value = saved.date || today;
+            } catch (e) {
+                if (dateEl && !dateEl.value) dateEl.value = today;
+            }
+        }
+
+        function saveRespondentInfo() {
+            const name = document.getElementById('student-name')?.value || '';
+            const email = document.getElementById('student-email')?.value || '';
+            const date = document.getElementById('student-date')?.value || new Date().toISOString().split('T')[0];
+            try {
+                localStorage.setItem(STORAGE_KEYS.respondent, JSON.stringify({ name, email, date }));
+            } catch (e) {
+                // Ignore storage errors
+            }
+            syncPrefilledButtonHref();
+        }
+
+        // =========================================================================
+        // 7. TAB 1: STUDY OUTLINE RENDERING & SPOTLIGHT MODE
+        // =========================================================================
+        function toggleSpotlightMode() {
+            spotlightActive = !spotlightActive;
+            const container = document.getElementById('outline-container');
+            const btn = document.getElementById('btn-spotlight');
+            if (container) container.classList.toggle('spotlight-mode', spotlightActive);
+            if (btn) {
+                btn.textContent = spotlightActive ? '✨ Spotlight Highlights: ON' : '✨ Spotlight Highlights: OFF';
+                btn.className = spotlightActive
+                    ? 'px-3 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold transition'
+                    : 'px-3 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-semibold transition';
+            }
+        }
+
+        function renderOutline() {
+            const container = document.getElementById('outline-container');
+            if (!container) return;
+
+            const query = (document.getElementById('outline-search')?.value || '').trim().toLowerCase();
+            const topicFilter = document.getElementById('outline-topic-filter')?.value || 'ALL';
+
+            const filtered = OUTLINE_DATA.filter((sec) => {
+                if (topicFilter !== 'ALL' && sec.topic !== topicFilter) return false;
+                if (!query) return true;
+                const haystack = `${sec.topicTitle} ${sec.title} ${sec.figures} ${sec.places} ${sec.bullets.join(' ')}`
+                    .replace(/<[^>]+>/g, ' ')
+                    .toLowerCase();
+                return haystack.includes(query);
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center text-sm text-slate-400">No outline sections match "<strong class="text-slate-200">${escapeHtml(query)}</strong>".</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map((sec) => `
+                <details open class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
+                    <summary class="cursor-pointer list-none px-5 py-4 bg-slate-900/90 hover:bg-slate-800/60 flex items-center justify-between gap-3 transition">
+                        <div>
+                            <span class="block text-[11px] font-bold uppercase tracking-wider text-amber-400">${escapeHtml(sec.topicTitle)}</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-100 mt-0.5">${escapeHtml(sec.title)}</h3>
+                        </div>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform text-sm">&#9662;</span>
+                    </summary>
+                    <div class="study-content px-5 pb-5 pt-2 border-t border-slate-800/80 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs bg-slate-950/80 border border-slate-800 rounded-xl p-3.5">
+                            <div>
+                                <span class="font-bold uppercase tracking-wider text-amber-400 block mb-1">Key Participants &amp; Providers</span>
+                                <p class="text-slate-300 leading-relaxed">${escapeHtml(sec.figures)}</p>
+                            </div>
+                            <div>
+                                <span class="font-bold uppercase tracking-wider text-blue-400 block mb-1">Platforms, Venues &amp; Channels</span>
+                                <p class="text-slate-300 leading-relaxed">${escapeHtml(sec.places)}</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed list-disc pl-5">
+                            ${sec.bullets.map((b) => `<li>${b}</li>`).join('')}
+                        </ul>
+                    </div>
+                </details>
+            `).join('');
+        }
+
+        // =========================================================================
+        // 8. TAB 2: 60 INTERACTIVE FLASHCARDS
+        // =========================================================================
+        function loadMasteredState() {
+            try {
+                const arr = JSON.parse(localStorage.getItem(STORAGE_KEYS.mastered) || '[]');
+                masteredSet = new Set(arr);
+            } catch (e) {
+                masteredSet = new Set();
+            }
+        }
+
+        function saveMasteredState() {
+            try {
+                localStorage.setItem(STORAGE_KEYS.mastered, JSON.stringify([...masteredSet]));
+            } catch (e) {
+                // Ignore storage errors
+            }
+        }
+
+        function filterFlashcards() {
+            const filter = document.getElementById('fc-topic-filter')?.value || 'ALL';
+            if (filter === 'ALL') {
+                filteredDeck = [...FLASHCARDS_DATA];
+            } else if (filter === 'UNMASTERED') {
+                filteredDeck = FLASHCARDS_DATA.filter((c) => !masteredSet.has(c.front));
+                if (filteredDeck.length === 0) {
+                    showToast('All 60 cards are mastered! Showing full deck.');
+                    filteredDeck = [...FLASHCARDS_DATA];
+                    document.getElementById('fc-topic-filter').value = 'ALL';
+                }
+            } else {
+                filteredDeck = FLASHCARDS_DATA.filter((c) => c.topic === filter);
+            }
+            currentCardIdx = 0;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+        }
+
+        function shuffleFlashcards() {
+            for (let i = filteredDeck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [filteredDeck[i], filteredDeck[j]] = [filteredDeck[j], filteredDeck[i]];
+            }
+            currentCardIdx = 0;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+            showToast('Deck shuffled!');
+        }
+
+        function renderFlashcard() {
+            if (!filteredDeck.length) return;
+            const card = filteredDeck[currentCardIdx];
+            const inner = document.getElementById('fc-card-inner');
+            const frontEl = document.getElementById('fc-front-text');
+            const backEl = document.getElementById('fc-back-text');
+            const hintEl = document.getElementById('fc-hint-text');
+            const badgeEl = document.getElementById('fc-topic-badge');
+            const statusEl = document.getElementById('fc-status-badge');
+            const counterEl = document.getElementById('fc-counter');
+            const masteredCountEl = document.getElementById('fc-mastered-count');
+            const progressEl = document.getElementById('fc-progress-bar');
+            const masterBtn = document.getElementById('btn-master-card');
+
+            if (inner) inner.classList.toggle('rotate-y-180', isCardFlipped);
+            if (frontEl) frontEl.textContent = card.front;
+            if (backEl) backEl.textContent = card.back;
+            if (hintEl) {
+                hintEl.textContent = `Hint: ${card.hint}`;
+                hintEl.classList.toggle('hidden', !hintVisible);
+            }
+            if (badgeEl) badgeEl.textContent = `Topic ${card.topic}`;
+
+            const isMastered = masteredSet.has(card.front);
+            if (statusEl) {
+                statusEl.textContent = isMastered ? 'Mastered ✓' : 'Front • Prompt';
+                statusEl.className = isMastered ? 'text-xs font-bold text-emerald-400' : 'text-xs font-semibold text-slate-400';
+            }
+            if (masterBtn) {
+                masterBtn.textContent = isMastered ? 'Unmark Mastered' : 'Mark Mastered';
+            }
+            if (counterEl) {
+                counterEl.textContent = `Card ${currentCardIdx + 1} of ${filteredDeck.length}`;
+            }
+            if (masteredCountEl) {
+                masteredCountEl.textContent = `Mastered: ${masteredSet.size} / ${FLASHCARDS_DATA.length}`;
+            }
+            if (progressEl) {
+                const pct = Math.round(((currentCardIdx + 1) / filteredDeck.length) * 100);
+                progressEl.style.width = `${pct}%`;
+            }
+        }
+
+        function flipFlashcard() {
+            isCardFlipped = !isCardFlipped;
+            renderFlashcard();
+        }
+
+        function toggleFlashcardHint() {
+            hintVisible = !hintVisible;
+            renderFlashcard();
+        }
+
+        function nextFlashcard() {
+            if (!filteredDeck.length) return;
+            currentCardIdx = (currentCardIdx + 1) % filteredDeck.length;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+        }
+
+        function prevFlashcard() {
+            if (!filteredDeck.length) return;
+            currentCardIdx = (currentCardIdx - 1 + filteredDeck.length) % filteredDeck.length;
+            isCardFlipped = false;
+            hintVisible = false;
+            renderFlashcard();
+        }
+
+        function toggleMasteredCurrent() {
+            if (!filteredDeck.length) return;
+            const card = filteredDeck[currentCardIdx];
+            if (masteredSet.has(card.front)) {
+                masteredSet.delete(card.front);
+            } else {
+                masteredSet.add(card.front);
+            }
+            saveMasteredState();
+            renderFlashcard();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (currentTab !== 'flashcards') return;
+            const tag = (e.target?.tagName || '').toLowerCase();
+            if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+            if (e.code === 'Space') {
+                e.preventDefault();
+                flipFlashcard();
+            } else if (e.code === 'ArrowRight') {
+                nextFlashcard();
+            } else if (e.code === 'ArrowLeft') {
+                prevFlashcard();
+            }
+        });
+
+        // =========================================================================
+        // 9. TAB 3: 180-POINT AUTO-GRADED UNIT TEST & GOOGLE FORM SUBMISSION
+        // =========================================================================
+        function renderUnitTest() {
+            const container = document.getElementById('test-sections-container');
+            if (!container) return;
+
+            const topicOrder = [
+                'Topic I: Digital & Electronic Payments',
+                'Topic II: Mobile Transfers, FinTech & Smart Cards',
+                'Topic III: Types of Checking Accounts',
+                'Topic IV: Managing Checking & Other Payment Methods'
+            ];
+
+            container.innerHTML = topicOrder.map((topicName, tIdx) => {
+                const sectionsInTopic = TEST_SECTIONS.filter((s) => s.topic === topicName);
+                const topicTotalPts = sectionsInTopic.length * 15;
+
+                const sectionsHtml = sectionsInTopic.map((sec) => {
+                    const termOptions = sec.matching.items.map((rawTerm, idx) => {
+                        const cleanTerm = rawTerm.replace(/^\d+\.\s*/, '');
+                        return { key: String(idx), text: cleanTerm };
+                    });
+
+                    const shuffledTermOptions = [...termOptions];
+                    for (let k = shuffledTermOptions.length - 1; k > 0; k--) {
+                        const r = Math.floor(Math.random() * (k + 1));
+                        [shuffledTermOptions[k], shuffledTermOptions[r]] = [shuffledTermOptions[r], shuffledTermOptions[k]];
+                    }
+
+                    const questionIndices = [0, 1, 2, 3, 4];
+                    for (let k = questionIndices.length - 1; k > 0; k--) {
+                        const r = Math.floor(Math.random() * (k + 1));
+                        [questionIndices[k], questionIndices[r]] = [questionIndices[r], questionIndices[k]];
+                    }
+
+                    const matchHtml = questionIndices.map((origIdx, displayIdx) => {
+                        const correctOptKey = sec.matching.answers[origIdx];
+                        const defObj = sec.matching.options.find((o) => o.key === correctOptKey);
+                        const definitionPrompt = `${displayIdx + 1}. ${defObj ? defObj.text : ''}`;
+
+                        return `
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+                                <span class="text-xs sm:text-sm font-semibold text-slate-200 sm:w-3/5">${escapeHtml(definitionPrompt)}</span>
+                                <div class="sm:w-2/5 flex flex-col gap-1">
+                                    <select id="${sec.id}-m-${origIdx}" onchange="onTestAnswerChange()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                                        <option value="">-- Select Matching Term --</option>
+                                        ${shuffledTermOptions.map((opt) => `<option value="${opt.key}">${escapeHtml(opt.text)}</option>`).join('')}
+                                    </select>
+                                    <span id="${sec.id}-m-fb-${origIdx}" class="hidden text-[11px] font-semibold"></span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    const mcHtml = sec.mc.map((qObj, i) => `
+                        <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                            <p class="text-xs sm:text-sm font-semibold text-slate-100">${escapeHtml(qObj.q)}</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                ${qObj.opts.map((optStr) => {
+                                    const letter = optStr.charAt(0);
+                                    return `
+                                        <label class="flex items-start gap-2 p-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-800 cursor-pointer text-xs text-slate-300">
+                                            <input type="radio" name="${sec.id}-mc-${i}" value="${letter}" onchange="onTestAnswerChange()" class="mt-0.5 accent-amber-500" />
+                                            <span>${escapeHtml(optStr)}</span>
+                                        </label>
+                                    `;
+                                }).join('')}
+                            </div>
+                            <p id="${sec.id}-mc-fb-${i}" class="hidden text-[11px] font-semibold"></p>
+                        </div>
+                    `).join('');
+
+                    const fibHtml = sec.fib.items.map((fObj, i) => `
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+                            <span class="text-xs sm:text-sm text-slate-200 sm:w-2/3">${escapeHtml(fObj.prompt)}</span>
+                            <div class="sm:w-1/3 flex flex-col gap-1">
+                                <select id="${sec.id}-fib-${i}" onchange="onTestAnswerChange()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                                    <option value="">-- Choose from Word Bank --</option>
+                                    ${sec.fib.wordBank.map((w) => `<option value="${escapeHtml(w)}">${escapeHtml(w)}</option>`).join('')}
+                                </select>
+                                <span id="${sec.id}-fib-fb-${i}" class="hidden text-[11px] font-semibold"></span>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    return `
+                        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-5 shadow-lg">
+                            <div class="border-b border-slate-800 pb-3 flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400">${escapeHtml(sec.topic)}</span>
+                                    <h3 class="text-base sm:text-lg font-bold text-slate-100">${escapeHtml(sec.title)}</h3>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" onclick="gradeSingleSection('${sec.id}')" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-bold transition">
+                                        Grade Section
+                                    </button>
+                                    <span id="${sec.id}-sec-score" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-950 border border-slate-700 text-slate-400">15 Points</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2.5">
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-300">Part A: Matching — Match Each Description to the Correct Term (5 Points)</h4>
+                                <div class="space-y-2">${matchHtml}</div>
+                            </div>
+
+                            <div class="space-y-2.5">
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-blue-300">Part B: Multiple Choice (5 Points)</h4>
+                                <div class="space-y-2.5">${mcHtml}</div>
+                            </div>
+
+                            <div class="space-y-2.5">
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-300">Part C: Fill-in-the-Blank (5 Points)</h4>
+                                    <span class="text-[11px] text-slate-400">Word Bank: <strong class="text-slate-200">${escapeHtml(sec.fib.wordBank.join(' | '))}</strong></span>
+                                </div>
+                                <div class="space-y-2">${fibHtml}</div>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2">
+                                <span id="${sec.id}-bottom-status" class="text-xs text-slate-400">Complete Parts A, B, and C, then grade this section or the full test.</span>
+                                <button type="button" onclick="gradeSingleSection('${sec.id}')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold shadow transition">
+                                    Grade This Section (15 Pts)
+                                </button>
+                            </div>
+                        </section>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="space-y-4">
+                        <div class="bg-slate-900/95 border border-amber-500/30 rounded-2xl px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-amber-400">Topic Group ${tIdx + 1} of 4</span>
+                                <h3 class="text-base sm:text-lg font-extrabold text-slate-100">${escapeHtml(topicName)}</h3>
+                            </div>
+                            <span id="topic-group-score-${tIdx}" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-950 border border-slate-700 text-slate-300">
+                                ${sectionsInTopic.length} Sections • ${topicTotalPts} Points
+                            </span>
+                        </div>
+                        <div class="space-y-6">${sectionsHtml}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateTestProgress() {
+            let answered = 0;
+            TEST_SECTIONS.forEach((sec) => {
+                for (let i = 0; i < 5; i++) {
+                    if (document.getElementById(`${sec.id}-m-${i}`)?.value) answered++;
+                    if (document.querySelector(`input[name="${sec.id}-mc-${i}"]:checked`)) answered++;
+                    if (document.getElementById(`${sec.id}-fib-${i}`)?.value) answered++;
+                }
+            });
+            const progEl = document.getElementById('test-progress-text');
+            if (progEl) progEl.textContent = `Answered: ${answered} / 180 items`;
+            return answered;
+        }
+
+        function onTestAnswerChange() {
+            updateTestProgress();
+            syncPrefilledButtonHref();
+        }
+
+        function evaluateSection(sec) {
+            let secScore = 0;
+
+            sec.matching.items.forEach((rawTerm, i) => {
+                const sel = document.getElementById(`${sec.id}-m-${i}`);
+                const fb = document.getElementById(`${sec.id}-m-fb-${i}`);
+                const val = sel?.value ?? '';
+                const correctIdx = String(i);
+
+                if (val === correctIdx) {
+                    secScore++;
+                    if (fb) {
+                        fb.textContent = '✓ Correct';
+                        fb.className = 'text-[11px] font-semibold text-emerald-400';
+                    }
+                } else if (fb) {
+                    fb.textContent = val ? '✗ Incorrect' : '✗ Unanswered';
+                    fb.className = 'text-[11px] font-semibold text-rose-400';
+                }
+            });
+
+            sec.mc.forEach((qObj, i) => {
+                const checked = document.querySelector(`input[name="${sec.id}-mc-${i}"]:checked`);
+                const fb = document.getElementById(`${sec.id}-mc-fb-${i}`);
+                const val = checked?.value || '';
+                if (val === qObj.ans) {
+                    secScore++;
+                    if (fb) {
+                        fb.textContent = '✓ Correct';
+                        fb.className = 'text-[11px] font-semibold text-emerald-400';
+                    }
+                } else if (fb) {
+                    fb.textContent = val ? '✗ Incorrect' : '✗ Unanswered';
+                    fb.className = 'text-[11px] font-semibold text-rose-400';
+                }
+            });
+
+            sec.fib.items.forEach((fObj, i) => {
+                const sel = document.getElementById(`${sec.id}-fib-${i}`);
+                const fb = document.getElementById(`${sec.id}-fib-fb-${i}`);
+                const val = sel?.value || '';
+                if (val.toLowerCase() === fObj.ans.toLowerCase()) {
+                    secScore++;
+                    if (fb) {
+                        fb.textContent = '✓ Correct';
+                        fb.className = 'text-[11px] font-semibold text-emerald-400';
+                    }
+                } else if (fb) {
+                    fb.textContent = val ? '✗ Incorrect' : '✗ Unanswered';
+                    fb.className = 'text-[11px] font-semibold text-rose-400';
+                }
+            });
+
+            const secPct = Math.round((secScore / 15) * 100);
+            const secBadge = document.getElementById(`${sec.id}-sec-score`);
+            if (secBadge) {
+                secBadge.textContent = `Score: ${secScore} / 15 (${secPct}%)`;
+                secBadge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-300';
+            }
+
+            const bottomStatus = document.getElementById(`${sec.id}-bottom-status`);
+            if (bottomStatus) {
+                bottomStatus.innerHTML = `<strong class="text-emerald-400">Section Graded: ${secScore} / 15 (${secPct}%)</strong>`;
+            }
+
+            return secScore;
+        }
+
+        function gradeSingleSection(secId) {
+            const sec = TEST_SECTIONS.find((s) => s.id === secId);
+            if (!sec) return;
+            const secScore = evaluateSection(sec);
+            const secPct = Math.round((secScore / 15) * 100);
+            showToast(`${sec.title.split(':')[0]} graded: ${secScore} / 15 (${secPct}%)`);
+        }
+
+        function gradeAllQuestions() {
+            let totalScore = 0;
+            const topicScores = { I: 0, II: 0, III: 0, IV: 0 };
+            const topicTotals = { I: 45, II: 45, III: 45, IV: 45 };
+            const sectionSummaries = [];
+
+            TEST_SECTIONS.forEach((sec) => {
+                const secScore = evaluateSection(sec);
+                const topicKey = sec.topic.includes('Topic IV') ? 'IV' : sec.topic.includes('Topic III') ? 'III' : sec.topic.includes('Topic II') ? 'II' : 'I';
+
+                totalScore += secScore;
+                topicScores[topicKey] += secScore;
+                sectionSummaries.push(`${sec.id}: ${secScore}/15`);
+            });
+
+            const topicKeys = ['I', 'II', 'III', 'IV'];
+            topicKeys.forEach((tk, idx) => {
+                const headerBadge = document.getElementById(`topic-group-score-${idx}`);
+                if (headerBadge) {
+                    const tPct = Math.round((topicScores[tk] / topicTotals[tk]) * 100);
+                    headerBadge.textContent = `Topic ${tk} Score: ${topicScores[tk]} / ${topicTotals[tk]} (${tPct}%)`;
+                    headerBadge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-300';
+                }
+            });
+
+            const pct = Math.round((totalScore / 180) * 100);
+            lastGradedResult = { totalScore, pct, topicScores, topicTotals, sectionSummaries };
+
+            const summaryBox = document.getElementById('score-summary-box');
+            const badge = document.getElementById('final-score-badge');
+            const breakdown = document.getElementById('topic-breakdown-text');
+
+            if (summaryBox) summaryBox.classList.remove('hidden');
+            if (badge) badge.textContent = `${totalScore} / 180 (${pct}%)`;
+            if (breakdown) {
+                breakdown.textContent = `Topic I (Digital Payments): ${topicScores.I}/${topicTotals.I} • Topic II (P2P & FinTech): ${topicScores.II}/${topicTotals.II} • Topic III (Checking Accounts): ${topicScores.III}/${topicTotals.III} • Topic IV (Account Management & Checks): ${topicScores.IV}/${topicTotals.IV}`;
+            }
+
+            syncPrefilledButtonHref();
+            showToast(`Test graded! Score: ${totalScore} / 180 (${pct}%)`);
+            summaryBox?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetUnitTest() {
+            TEST_SECTIONS.forEach((sec) => {
+                for (let i = 0; i < 5; i++) {
+                    const mSel = document.getElementById(`${sec.id}-m-${i}`);
+                    const mFb = document.getElementById(`${sec.id}-m-fb-${i}`);
+                    if (mSel) mSel.value = '';
+                    if (mFb) mFb.className = 'hidden';
+
+                    document.querySelectorAll(`input[name="${sec.id}-mc-${i}"]`).forEach((r) => { r.checked = false; });
+                    const mcFb = document.getElementById(`${sec.id}-mc-fb-${i}`);
+                    if (mcFb) mcFb.className = 'hidden';
+
+                    const fSel = document.getElementById(`${sec.id}-fib-${i}`);
+                    const fFb = document.getElementById(`${sec.id}-fib-fb-${i}`);
+                    if (fSel) fSel.value = '';
+                    if (fFb) fFb.className = 'hidden';
+                }
+            });
+
+            lastGradedResult = null;
+            document.getElementById('score-summary-box')?.classList.add('hidden');
+            document.getElementById('submit-status-box')?.classList.add('hidden');
+            renderUnitTest();
+            updateTestProgress();
+            syncPrefilledButtonHref();
+            showToast('All test answers cleared and matching questions reshuffled.');
+        }
+
+        // =========================================================================
+        // 10. GOOGLE FORM DIRECT & PRE-FILLED SUBMISSION
+        // =========================================================================
+        function getActiveFormConfig() {
+            return { ...DEFAULT_FORM_CONFIG };
+        }
+
+        function buildSubmissionPayload() {
+            const cfg = getActiveFormConfig();
+            const studentName = (document.getElementById('student-name')?.value || '').trim();
+            const studentEmail = (document.getElementById('student-email')?.value || '').trim();
+            const submitDate = (document.getElementById('student-date')?.value || new Date().toISOString().split('T')[0]).trim();
+
+            const scoreText = lastGradedResult
+                ? `${lastGradedResult.totalScore} / 180 (${lastGradedResult.pct}%) — Lesson 5.4`
+                : `Ungraded (${updateTestProgress()} / 180 answered) — Lesson 5.4`;
+
+            const detailsText = lastGradedResult
+                ? `[PF Ch.5 Lesson 5.4] Topic I: ${lastGradedResult.topicScores.I}/${lastGradedResult.topicTotals.I} | Topic II: ${lastGradedResult.topicScores.II}/${lastGradedResult.topicTotals.II} | Topic III: ${lastGradedResult.topicScores.III}/${lastGradedResult.topicTotals.III} | Topic IV: ${lastGradedResult.topicScores.IV}/${lastGradedResult.topicTotals.IV} || ${lastGradedResult.sectionSummaries.join(', ')}`
+                : `[PF Ch.5 Lesson 5.4] Answered ${updateTestProgress()} of 180 items`;
+
+            return { cfg, studentName, studentEmail, submitDate, scoreText, detailsText };
+        }
+
+        async function submitDirectlyToFormResponse() {
+            const studentName = (document.getElementById('student-name')?.value || '').trim();
+            const statusBox = document.getElementById('submit-status-box');
+
+            if (!studentName) {
+                const zone = document.getElementById('top-header-zone');
+                if (zone && !zone.classList.contains('header-pinned')) {
+                    toggleHeaderPin();
+                }
+                document.getElementById('student-name')?.focus();
+                if (statusBox) {
+                    statusBox.className = 'mb-3 p-3 rounded-lg text-xs font-medium bg-amber-950/80 border border-amber-500/40 text-amber-200';
+                    statusBox.textContent = 'Please enter your Full Name in the top bar before submitting.';
+                    statusBox.classList.remove('hidden');
+                }
+                showToast('Please enter your Full Name in the top bar first.');
+                return;
+            }
+
+            if (!lastGradedResult) {
+                gradeAllQuestions();
+            }
+
+            const { cfg, studentEmail, submitDate, scoreText, detailsText } = buildSubmissionPayload();
+            const formBody = new URLSearchParams();
+            if (cfg.name) formBody.append(cfg.name, studentName);
+            if (cfg.email) formBody.append(cfg.email, studentEmail);
+            if (cfg.date) formBody.append(cfg.date, submitDate);
+            if (cfg.score) formBody.append(cfg.score, scoreText);
+            if (cfg.details) formBody.append(cfg.details, detailsText);
+
+            try {
+                await fetch(cfg.url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formBody.toString()
+                });
+
+                if (statusBox) {
+                    statusBox.className = 'mb-3 p-3 rounded-lg text-xs font-medium bg-emerald-950/80 border border-emerald-500/40 text-emerald-200';
+                    statusBox.textContent = `Submitted directly to Google Form for ${studentName} (${lastGradedResult.totalScore}/180, ${lastGradedResult.pct}%)! You can also click "Open Pre-Filled Google Form" to view a receipt.`;
+                    statusBox.classList.remove('hidden');
+                }
+                showToast('Score submitted directly to Google Form!');
+            } catch (err) {
+                if (statusBox) {
+                    statusBox.className = 'mb-3 p-3 rounded-lg text-xs font-medium bg-amber-950/80 border border-amber-500/40 text-amber-200';
+                    statusBox.textContent = 'Direct background send was blocked by browser network rules. Please click "Open Pre-Filled Google Form" to submit.';
+                    statusBox.classList.remove('hidden');
+                }
+            }
+        }
+
+        function buildPrefilledFormUrl() {
+            const { cfg, studentName, studentEmail, submitDate, scoreText, detailsText } = buildSubmissionPayload();
+            const baseUrl = (cfg.viewformUrl || DEFAULT_FORM_CONFIG.viewformUrl).trim();
+
+            try {
+                const urlObj = new URL(baseUrl);
+                if (cfg.name && studentName) urlObj.searchParams.set(cfg.name, studentName);
+                if (cfg.email && studentEmail) urlObj.searchParams.set(cfg.email, studentEmail);
+                if (cfg.date && submitDate) urlObj.searchParams.set(cfg.date, submitDate);
+                if (cfg.score) urlObj.searchParams.set(cfg.score, scoreText);
+                if (cfg.details) urlObj.searchParams.set(cfg.details, detailsText);
+                return urlObj.toString();
+            } catch (e) {
+                const sep = baseUrl.includes('?') ? '&' : '?';
+                const params = [];
+                if (cfg.name && studentName) params.push(`${encodeURIComponent(cfg.name)}=${encodeURIComponent(studentName)}`);
+                if (cfg.email && studentEmail) params.push(`${encodeURIComponent(cfg.email)}=${encodeURIComponent(studentEmail)}`);
+                if (cfg.date && submitDate) params.push(`${encodeURIComponent(cfg.date)}=${encodeURIComponent(submitDate)}`);
+                if (cfg.score) params.push(`${encodeURIComponent(cfg.score)}=${encodeURIComponent(scoreText)}`);
+                if (cfg.details) params.push(`${encodeURIComponent(cfg.details)}=${encodeURIComponent(detailsText)}`);
+                return params.length ? `${baseUrl}${sep}${params.join('&')}` : baseUrl;
+            }
+        }
+
+        function syncPrefilledButtonHref() {
+            const btn = document.getElementById('btn-submit-gform');
+            const badge = document.getElementById('test-form-status-badge');
+            const statusText = document.getElementById('test-form-status-text');
+            const studentName = (document.getElementById('student-name')?.value || '').trim();
+            const url = buildPrefilledFormUrl();
+
+            if (btn) btn.href = url;
+
+            if (badge && statusText) {
+                if (!studentName) {
+                    badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30';
+                    badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Enter Name Above';
+                    statusText.textContent = 'Hover the top edge to enter your Name, grade your test, and submit directly to Google Form or open the pre-filled link.';
+                } else if (!lastGradedResult) {
+                    badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30';
+                    badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Ready to Grade';
+                    statusText.textContent = `Student: ${studentName} • Click "Grade My Test" first so your official score is recorded in the Google Form.`;
+                } else {
+                    badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30';
+                    badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Score Ready to Submit';
+                    statusText.textContent = `Ready for ${studentName} (${lastGradedResult.totalScore}/180, ${lastGradedResult.pct}%). Submit directly or open the pre-filled Google Form.`;
+                }
+            }
+        }
+
+        function handleGoogleFormLinkClick(event) {
+            const studentName = (document.getElementById('student-name')?.value || '').trim();
+            const statusBox = document.getElementById('submit-status-box');
+
+            if (!studentName) {
+                if (event) event.preventDefault();
+                const zone = document.getElementById('top-header-zone');
+                if (zone && !zone.classList.contains('header-pinned')) {
+                    toggleHeaderPin();
+                }
+                const nameInput = document.getElementById('student-name');
+                if (nameInput) nameInput.focus();
+
+                if (statusBox) {
+                    statusBox.className = 'mb-3 p-3 rounded-lg text-xs font-medium bg-amber-950/80 border border-amber-500/40 text-amber-200';
+                    statusBox.textContent = 'Please enter your Full Name in the top bar before opening the Google Form.';
+                    statusBox.classList.remove('hidden');
+                }
+                showToast('Please enter your Full Name in the top bar first.');
+                return false;
+            }
+
+            if (!lastGradedResult) {
+                gradeAllQuestions();
+            }
+
+            syncPrefilledButtonHref();
+
+            if (statusBox) {
+                statusBox.className = 'mb-3 p-3 rounded-lg text-xs font-medium bg-emerald-950/80 border border-emerald-500/40 text-emerald-200';
+                statusBox.textContent = `Opened pre-filled Google Form for ${studentName} (${lastGradedResult.totalScore}/180). Be sure to click "Submit" on the Google Form page!`;
+                statusBox.classList.remove('hidden');
+            }
+            return true;
+        }
+
+        function copyPrefilledGoogleFormLink() {
+            if (!lastGradedResult && updateTestProgress() > 0) {
+                gradeAllQuestions();
+            }
+            const url = buildPrefilledFormUrl();
+            const tempInput = document.createElement('textarea');
+            tempInput.value = url;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast('Pre-filled Google Form link copied to clipboard!');
+            } catch (e) {
+                showToast('Unable to copy link automatically.');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // =========================================================================
+        // 11. STANDALONE GITHUB PAGES HTML EXPORT
+        // =========================================================================
+        function downloadStandaloneHTML() {
+            const cfg = getActiveFormConfig();
+            const rawHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            const serializedDefaults = JSON.stringify(cfg, null, 12);
+            const updatedHtml = rawHtml.replace(
+                /const DEFAULT_FORM_CONFIG = \{[\s\S]*?\};/,
+                `const DEFAULT_FORM_CONFIG = ${serializedDefaults};`
+            );
+
+            const blob = new Blob([updatedHtml], { type: 'text/html;charset=utf-8' });
+            const blobUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+            showToast('Downloaded standalone index.html for GitHub Pages!');
+        }
+
+        // =========================================================================
+        // 12. INITIALIZE APPLICATION ON PAGE LOAD
+        // =========================================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            loadRespondentInfo();
+            loadMasteredState();
+            renderOutline();
+            renderFlashcard();
+            renderUnitTest();
+            updateTestProgress();
+            syncPrefilledButtonHref();
+        });
+    </script>
+</body>
+</html>
